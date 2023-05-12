@@ -1,0 +1,30 @@
+<!-- {% load static %} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Traverse Home{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    {% if user.is_authenticated %}
+    <div class="greeting">
+        <h2>{{ user.username }}</h2>
+    </div>
+
+        <a href="{% url 'logout' %}">LOGOUT</a>
+
+    {% else %}
+    <div class="greeting">
+        <h2>Traverse</h2>
+    </div>
+    <div class="auth">
+        <a href="{% url 'login' %}">Login</a> or
+        <a href="{% url 'accounts:signup' %}">Sign Up</a>
+    </div>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>  
