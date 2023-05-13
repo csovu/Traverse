@@ -1,0 +1,16 @@
+body {
+    background-color: rgba(124, 175, 124, 0.567);
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+.greeting {
+    display: flex;
+}
+
+.auth {
+    word-spacing: 3px;
+}
