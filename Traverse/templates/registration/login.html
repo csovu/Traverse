@@ -1,0 +1,15 @@
+{% extends 'home.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<a href="{% url 'home' %}">Home</a>
+<a href="{% url 'accounts:signup' %}">Create Account</a>
+<h2>Log in</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Log in">
+</form>
+
+{% endblock %}
