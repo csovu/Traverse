@@ -1,0 +1,8 @@
+{% load static %}
+<p>create a new post</p>
+
+<form action="{% url 'posts:create' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="trip_title"/>
+    <button type="submit">save</button>
+</form>

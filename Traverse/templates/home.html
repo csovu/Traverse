@@ -15,11 +15,12 @@
 
     {% block content %}
     {% if user.is_authenticated %}
-    <div class="greeting">
-        <h2>{{ user.username }}</h2>
-    </div>
+  
     <div class="auth">
         <a href="{% url 'logout' %}">LOGOUT</a>
+    </div>
+    <div class="create-button">
+        <a href="{% url 'posts:create' %}">Create Report</a>
     </div>
     {% else %}
 
@@ -28,7 +29,24 @@
         <a href="{% url 'accounts:signup' %}">Create Account</a>
     </div>
     {% endif %}
-
+    
+    <div id="latest_posts">
+        {% if latest_post_list%}
+            <p id="home_reports">Today's Trip Reports</p>
+            <br>
+                
+                {%for post in latest_post_list%}
+                <div class="post">
+                    <p >{{post.trip_title}}</p>
+                    <p >posted by:<a href="{% url 'posts:profile' user.id %}">{{post.user}}</a>, {{post.date_posted}}</p>
+                </div>
+                    {%endfor%}
+            
+            {% else %}
+            <p>No new Reports! </p>
+        {%endif%}
+    </div>
+ 
     {% endblock %}
     </div>
 
