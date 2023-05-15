@@ -5,6 +5,7 @@ app_name = 'posts'
 
 urlpatterns = [
     path("home", views.AllPosts, name="home"),
+    path("account", views.account, name="account"),
     path("profile/<int:user_name_id>", views.profile , name="profile"),
     path("create/", views.CreatePost, name="create"),
 ]

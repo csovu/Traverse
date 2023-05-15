@@ -27,3 +27,7 @@ def profile(request, user_id):
     selected_user = get_user_model().objects.get(pk=user_id)
     all_posts = Posts.objects.filter(user = selected_user)
     return render(request,'traverse/profile.html', {'all_posts':all_posts})
+
+def account(request, user_id):
+    user_account = get_user_model().objects.get(pk=user_id)
+    return render(request, )
