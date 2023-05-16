@@ -1,11 +1,16 @@
 {% load static %}
 
-<a href="{% url 'home' %}">Home</a>
-<p>create a new post</p>
+{% block content %}
 
-<form action="{% url 'posts:create' %}" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
+{% csrf_token %}
 
-    <button type="submit">save</button>
-</form>
+<div id="new-report">
+    <form id="create-report" method="post">
+        <h1>New Report</h1>
+        {% load crispy_forms_tags %}
+        {% crispy form %}
+    </form>
+</div>
+
+
+{% endblock %}

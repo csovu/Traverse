@@ -14,3 +14,7 @@ header {
 .auth {
     word-spacing: 3px;
 }
+
+#new-report {
+    background-color: rgb(92, 89, 129);
+}
