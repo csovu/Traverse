@@ -1,0 +1,18 @@
+{% extends 'home.html' %}
+{%load static%}
+{% block content %}
+
+
+
+    {%if all_posts%}
+        {%for post in all_posts%}
+        <div id="profile">
+            <p>{{post}} </p>
+            <p>posted by: {{post.user_name}} </p>
+        </div>
+        {%endfor%}
+    {%endif%}
+
+
+
+{% endblock %}

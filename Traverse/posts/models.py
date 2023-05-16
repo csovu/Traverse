@@ -3,6 +3,7 @@ from datetime import date
 from django.contrib.auth import get_user_model
 
 
+
 class Posts(models.Model):
     trip_title = models.CharField(max_length=50, blank=False) 
     trip_summery = models.CharField(max_length=2000, blank=False)
@@ -16,7 +17,7 @@ class Posts(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.__all__
     
 class Image(models.Model):
     title = models.CharField(max_length=100)
@@ -25,3 +26,5 @@ class Image(models.Model):
 
     def __str__(self):
         return self.title
+    
+
