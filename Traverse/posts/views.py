@@ -15,7 +15,6 @@ def AllPosts(request):
 @login_required
 def CreatePost(request):
     user = get_user_model().objects.get(pk=request.user.id)
-    print(user.id)
     if request.method == 'POST':
         form = CreatePostForm(request.POST)
         if form.is_valid():
@@ -29,10 +28,11 @@ def CreatePost(request):
     return render(request, 'traverse/create.html',  {'form':form, 'user':user})
 
 
-def profile(request, user_id):
+def Userprofile(request, user_id):
     selected_user = get_user_model().objects.get(pk=user_id)
-    all_posts = Posts.objects.filter(user = selected_user)
-    return render(request,'traverse/profile.html', {'all_posts':all_posts})
+    user_posts = Posts.objects.filter(user = selected_user)
+    return render(request,'traverse/profile.html', {'user_posts':user_posts})
+
 
 def account(request, user_id):
     user_account = get_user_model().objects.get(pk=user_id)

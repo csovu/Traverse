@@ -2,15 +2,22 @@
 {%load static%}
 {% block content %}
 
+<a href="{% url 'posts:all' %}">Home</a>
 
-
-    {%if all_posts%}
-        {%for post in all_posts%}
-        <div id="profile">
-            <p>{{post}} </p>
-            <p>posted by: {{post.user_name}} </p>
-        </div>
+    {%if user_posts %}
+    <div id="user-profile">
+    <p>posts by: {{user}} </p>
+    </div>
+        {%for post in user_posts%}
+            <div id="profile-posts">
+                <p>{{post.trip_title}} </p>
+                <p>{{post.trip_summery}} </p>
+                <p>{{post.date_posted}} </p>
+                <p>{{post.location}} </p>
+            </div>
         {%endfor%}
+    {% else %}
+    <p>This user has no Reports!</p>
     {%endif%}
 
 
