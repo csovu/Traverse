@@ -11,9 +11,10 @@
         {%for post in user_posts%}
             <div id="profile-posts">
                 <p>{{post.trip_title}} </p>
-                <p>{{post.trip_summery}} </p>
                 <p>{{post.date_posted}} </p>
                 <p>{{post.location}} </p>
+                <p>{{post.trip_summery}} </p>
+              
             </div>
         {%endfor%}
     {% else %}
