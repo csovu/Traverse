@@ -1,10 +1,12 @@
 body {
-    background-color: rgba(124, 175, 124, 0.567);
+    background-color: rgba(143, 120, 153, 0.567);
+
 }
 
 header {
     display: flex;
     justify-content: center;
+    font-family: 'Playfair Display', serif;
 }
 
 .greeting {
@@ -16,5 +18,10 @@ header {
 }
 
 #new-report {
-    background-color: rgb(92, 89, 129);
+    background-color: rgb(93, 91, 121);
+}
+
+#nav-bar {
+    display: flex;
+    justify-content: flex-end;
 }
