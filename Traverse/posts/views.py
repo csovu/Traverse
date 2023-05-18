@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .forms import CreatePostForm
+from .forms import *
 
 
 def AllPosts(request):
@@ -24,7 +24,7 @@ def CreatePost(request):
         return HttpResponseRedirect(reverse('posts:all'))
 
     else:
-         form = CreatePostForm()
+        form = CreatePostForm()
     return render(request, 'traverse/create.html',  {'form':form, 'user':user})
 
 
@@ -41,3 +41,19 @@ def myAccount(request):
 def SinglePost(request, id):
     onepost = Posts.objects.filter(id=id)
     return render(request,'traverse/singlepost.html', {'onepost':onepost})
+
+@login_required
+def EditPost(request, id):
+    post = Posts.objects.filter(id=id)
+    user = get_user_model().objects.get(pk=request.user.id)
+    if request.method == 'POST':
+        form = PostEditForm(request.POST)
+        if form.is_valid():
+            edit_post = form.save(commit=False)
+            edit_post.user = user
+            edit_post.save()
+        return HttpResponseRedirect(reverse('posts:all'))
+
+    else:
+        form = PostEditForm()
+    return render(request, 'traverse/editpost.html',  {'form':form, 'post':post, 'user':user})

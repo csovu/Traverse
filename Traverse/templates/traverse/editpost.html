@@ -1,12 +1,12 @@
 {% load static %}
 
 {% block content %}
-<a href="{% url 'posts:all' %}">Home</a>
+
 {% csrf_token %}
 
 <div id="new-report">
     <form id="create-report" method="post">
-        <h1>New Report</h1>
+        <h1>Edit post</h1>
         {% load crispy_forms_tags %}
         {% crispy form %}
     </form>
