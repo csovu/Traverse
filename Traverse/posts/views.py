@@ -31,7 +31,7 @@ def CreatePost(request):
 def Userprofile(request, user_id):
     selected_user = get_user_model().objects.get(pk=user_id)
     user_posts = Posts.objects.filter(user = selected_user)
-    return render(request,'traverse/profile.html', {'user_posts':user_posts})
+    return render(request,'traverse/profile.html', {'user_posts':user_posts, 'selected_user':selected_user})
 
 
 def account(request, user_id):
