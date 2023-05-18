@@ -34,9 +34,9 @@ def Userprofile(request, user_id):
     return render(request,'traverse/profile.html', {'user_posts':user_posts, 'selected_user':selected_user})
 
 
-def account(request, user_id):
-    user_account = get_user_model().objects.get(pk=user_id)
-    return render(request, user_account)
+def myAccount(request):
+    user_account = get_user_model().objects.get(pk=request.user.id)
+    return render(request, 'traverse/myaccount.html', {'user_account':user_account})
 
 def SinglePost(request, id):
     onepost = Posts.objects.filter(id=id)
