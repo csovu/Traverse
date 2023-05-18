@@ -5,6 +5,9 @@
 <p>My Account Information</p>
 <p>photo:{{user_account.profile_picture}}</p>
 <p>User Name: {{user_account}}</p>
-<p>About Me: {{user_account.about}}</p>
-
+    {% if user_account.about %}
+        <p>About Me: {{user_account.about}}</p>
+    {% else %}
+        <p>Add more about yourself! 'botton will go here'</p>
+    {%endif%}
 {% endblock %}
