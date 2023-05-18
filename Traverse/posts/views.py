@@ -37,3 +37,7 @@ def Userprofile(request, user_id):
 def account(request, user_id):
     user_account = get_user_model().objects.get(pk=user_id)
     return render(request, user_account)
+
+def SinglePost(request, id):
+    onepost = Posts.objects.filter(id=id)
+    return render(request,'traverse/singlepost.html', {'onepost':onepost})
