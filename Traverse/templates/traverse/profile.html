@@ -10,11 +10,11 @@
     </div>
         {%for post in user_posts%}
             <div id="profile-posts">
-                <p>{{post.trip_title}} </p>
+                <p>{{post.trip_title}}</p>
                 <p>{{post.date_posted}} </p>
-                <p>{{post.location}} </p>
+                <p>location: {{post.location}} </p>
                 <p>{{post.trip_summery}} </p>
-              
+                <a href="{% url 'posts:singlepost' post.id %}">see more {{post.post}}</a>
             </div>
         {%endfor%}
     {% else %}

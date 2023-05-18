@@ -8,4 +8,5 @@ urlpatterns = [
     path("account/", views.account, name="account"),
     path("profile/<int:user_id>/", views.Userprofile , name="profile"),
     path("create/", views.CreatePost, name="create"),
+    path("post/<int:id>/", views.SinglePost, name="singlepost"),
 ]
