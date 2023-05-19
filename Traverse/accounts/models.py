@@ -5,6 +5,7 @@ class CustomUser(AbstractUser):
     location = models.CharField(max_length=40, null=True, blank=True)
     favorites = models.CharField(max_length=500, null=True, blank=True)
     about = models.CharField(max_length=200, null=True, blank=True)
+    profile_picture = models.ImageField(upload_to='images', null=True, blank=True)
     def __str__(self):
         return self.username
     

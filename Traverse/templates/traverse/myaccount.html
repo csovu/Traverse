@@ -1,0 +1,13 @@
+{% extends 'home.html' %}
+{%load static%}
+{% block content %}
+<a href="{% url 'posts:all' %}">Home</a>
+<p>My Account Information</p>
+<p>photo:{{user_account.profile_picture}}</p>
+<p>User Name: {{user_account}}</p>
+    {% if user_account.about %}
+        <p>About Me: {{user_account.about}}</p>
+    {% else %}
+        <p>Add more about yourself! 'botton will go here'</p>
+    {%endif%}
+{% endblock %}
