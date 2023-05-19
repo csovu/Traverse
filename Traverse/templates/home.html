@@ -28,6 +28,7 @@
             <div class="create-button">
                 <a href="{% url 'posts:create' %}">Create Report</a>
                 <a href="{% url 'posts:myaccount' %}">My Account</a>
+                <p>welcome {{user.username}}</p>
             </div>
             {% else %}
 
@@ -43,6 +44,7 @@
             <br>
                 
                 {%for post in latest_post_list%}
+               
                 <div class="post">
                     <p >{{post.trip_title}}...<a href="{% url 'posts:singlepost' post.id %}">see more {{post.post}}</a></p>
                     <p>posted by:<a href="{% url 'posts:profile' post.user.id %}">{{post.user}}</a>, {{post.date_posted}}</p>

@@ -60,10 +60,11 @@ def EditPost(request, id):
 
 @login_required
 def DeletePost(request, id):
-    # if request.user.id == post.user.id:
+    user = get_user_model().objects.get(pk=request.user.id)
+    if user == post.user:
         post = get_object_or_404(Posts, pk=id)
         post.delete()
-    # else:
-    #     return render(request,'home.html')
-        return HttpResponseRedirect(reverse('posts:all'))
+    else:
+        return render(request,'home.html')
+    return HttpResponseRedirect(reverse('posts:all'))
 
