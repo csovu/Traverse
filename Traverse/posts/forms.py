@@ -5,23 +5,11 @@ from django.urls import reverse_lazy
 from posts.models import *
 
 
-# class CreatePostForm(ModelForm):
-#     class Meta:
-#         model = Posts
-#         fields = '__all__'
-
 class CreatePostForm(forms.ModelForm):
-    # trip_title = forms.CharField(max_length=50) 
-    # trip_summery = forms.CharField(max_length=2000, widget=forms.Textarea())
-    # trail_conditions = forms.CharField(max_length=2000, widget=forms.Textarea())
-    # planning_info = forms.CharField(max_length=2000, widget=forms.Textarea())
-    # other_details = forms.CharField(max_length=2000, widget=forms.Textarea())
-    # location= forms.CharField(max_length=100)
-    # map_details = forms.URLField(max_length=300) 
+
     class Meta:
         model= Posts
         fields = ['trip_title', 'trip_summery', 'trail_conditions', 'planning_info', 'other_details','location', 'map_details']
-        # exclude = ['user']
     def __init__(self, *args, **kwargs):
     
         super(CreatePostForm, self).__init__(*args, **kwargs)
