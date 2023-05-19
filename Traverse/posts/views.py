@@ -44,10 +44,10 @@ def SinglePost(request, id):
 
 @login_required
 def EditPost(request, id):
-    post = Posts.objects.filter(id=id)
+    post = Posts.objects.get(pk=id)
     user = get_user_model().objects.get(pk=request.user.id)
     if request.method == 'POST':
-        form = PostEditForm(request.POST)
+        form = PostEditForm(request.POST, instance=post)
         if form.is_valid():
             edit_post = form.save(commit=False)
             edit_post.user = user
@@ -55,5 +55,6 @@ def EditPost(request, id):
         return HttpResponseRedirect(reverse('posts:all'))
 
     else:
-        form = PostEditForm()
+        form = PostEditForm(instance=post)
     return render(request, 'traverse/editpost.html',  {'form':form, 'post':post, 'user':user})
+
