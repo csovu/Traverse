@@ -1,16 +1,16 @@
 {% load static %}
 
 {% block content %}
+{% if user.is_authenticated %}
+    {% csrf_token %}
 
-{% csrf_token %}
-
-<div id="new-report">
-    <form id="create-report" method="post">
-        <h1>Edit post</h1>
-        {% load crispy_forms_tags %}
-        {% crispy form %}
-    </form>
-</div>
-
+    <div id="new-report">
+        <form id="create-report" method="post">
+            <h1>Edit post</h1>
+            {% load crispy_forms_tags %}
+            {% crispy form %}
+        </form>
+    </div>
+{% endif %}
 
 {% endblock %}

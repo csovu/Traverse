@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, get_object_or_404
 from posts.models import *
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
@@ -57,4 +57,13 @@ def EditPost(request, id):
     else:
         form = PostEditForm(instance=post)
     return render(request, 'traverse/editpost.html',  {'form':form, 'post':post, 'user':user})
+
+@login_required
+def DeletePost(request, id):
+    # if request.user.id == post.user.id:
+        post = get_object_or_404(Posts, pk=id)
+        post.delete()
+    # else:
+    #     return render(request,'home.html')
+        return HttpResponseRedirect(reverse('posts:all'))
 

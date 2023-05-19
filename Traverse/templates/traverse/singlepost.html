@@ -16,7 +16,11 @@
                 <p>{{post.last_edited}} </p>
                 <p>{{post.location}} </p>
                 <p>{{post.map_details}} </p>
-                <a href="{% url 'posts:editpost' post.id %}">edit post</a>
+
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'posts:editpost' post.id %}">edit post</a>
+                    {% endif %}
+                    
             </div>
         {%endfor%}
 

@@ -1,6 +1,6 @@
 from django import forms 
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import (Submit, Layout, ButtonHolder)
+from crispy_forms.layout import (Submit, Button)
 from django.urls import reverse_lazy
 from posts.models import *
 
@@ -38,6 +38,7 @@ class PostEditForm(forms.ModelForm):
         super(PostEditForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.add_input(Submit('save', "Save changes", css_class = 'btn-success'))
+        self.helper.add_input(Button('delete', 'Delete', onclick='window.location.href="{}"'.format('delete')))
 
     class Meta:
         model = Posts
