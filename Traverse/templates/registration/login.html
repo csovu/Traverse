@@ -3,9 +3,9 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<a href="{% url 'posts:all' %}">Home</a>
+
 <a href="{% url 'accounts:signup' %}">Create Account</a>
-<h2>Log in</h2>
+<h2 id="login-page">Log in</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

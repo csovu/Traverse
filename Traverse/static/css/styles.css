@@ -1,12 +1,15 @@
 body {
-    background-color: rgba(143, 120, 153, 0.567);
+    background-color: rgba(143, 192, 233, 0.567);
 
 }
 
 header {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     font-family: 'Playfair Display', serif;
+    padding: 1.5em;
+    text-decoration-color: #000000;
 }
 
 .greeting {
@@ -21,7 +24,68 @@ header {
     background-color: rgb(93, 91, 121);
 }
 
-#nav-bar {
-    display: flex;
-    justify-content: flex-end;
+
+#latest_posts {
+  display: flex;
+  flex-direction: column;   
+  padding-top: 1.5em;
+}
+
+.post {
+    border:solid ;
+    padding: 1em;
+    border-radius: .2em;
+    border-width: 1px ;
+    justify-content: space-around;
+}
+#login-page{
+    padding: 1em;
+}
+#myaccount-view{
+    padding: 1.5em;
+}
+
+li {
+    float: left;
+  }
+#nav-button {
+    background-color: #f7f9f9;
+
+}
+.dropdown {
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    /* position: fixed; */
+ 
+
+  }
+  .dropdown-content {
+    display: none;
+    position: relative;
+    width: 100%;
+    overflow: auto;
+    /* box-shadow: 0px 10px 10px 0px rgba(95, 93, 93, 0.4); */
+    background-color: #f7f9f9;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .dropdown-content a {
+    display: block;
+    color: #000000;
+    padding: 5px;
+    text-decoration: none;
+  }
+  .dropdown-content a:hover {
+    color: #100808;
+    background-color: #f7f9f9;
+  }
+
+@media screen and (min-width:650px) {
+
+}
+
+@media screen and (min-width:1000px) {
+
 }
