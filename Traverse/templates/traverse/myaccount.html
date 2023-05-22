@@ -5,10 +5,14 @@
 <p>My Account Information</p>
 <p>photo:{{user_account.profile_picture}}</p>
 <p>User Name: {{user_account}}</p>
+<p>Location: {{location}}</p>
     {% if user_account.about %}
         <p>About Me: {{user_account.about}}</p>
+        <a href="{% url 'accounts:editabout' %}" class="button">Edit Info</a>
     {% else %}
-        <p>Add more about yourself! 'botton will go here'</p>
+        <p>Add more about yourself!</p>
+
+        <a href="{% url 'accounts:editabout' %}" class="button">Add Info</a>
     {%endif%}
 </div>
 {% endblock %}
