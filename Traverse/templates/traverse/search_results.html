@@ -1,0 +1,35 @@
+{% load static %}
+
+{% block content %}
+{% csrf_token %}
+
+<ul>
+{% if object_list%}
+    <p>Post Matches:</p>
+    {%for q in object_list%}
+               
+    <div class="search-result">
+        <p >{{q.trip_title}}...<a href="{% url 'posts:singlepost' q.id %}">see more {{q.post}}</a></p>
+        <p>posted by:<a href="{% url 'posts:profile' q.user.id %}">{{q.user}}</a>, {{q.date_posted}}</p>
+    </div>
+        {%endfor%}
+    {% else %}
+    <p>No post matches found. </p>
+{%endif%}
+</ul>
+
+<ul>
+{% if users%}
+<p>User Matches: </p>
+    {%for q in users%}
+
+        <li>{{q}}</li>
+    {%endfor%}
+    {% else %}
+    <p>No user matches found. </p>
+{%endif%}
+</ul>
+
+
+
+{% endblock %}

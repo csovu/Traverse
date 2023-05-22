@@ -1,10 +1,10 @@
-from django.urls import include, path
-from .views import *
-from . import views
+# from django.urls import include, path
+# from .views import *
+# from . import views
 
-appname = 'apis'
+# appname = 'apis'
 
-urlpatterns = [
-    path('editabout/', AboutView.as_view()),
+# urlpatterns = [
+#     path('editabout/', AboutView.as_view()),
 
-]
+# ]

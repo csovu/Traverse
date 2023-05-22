@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render, reverse, get_object_or_404
 from posts.models import *
 from django.contrib.auth import get_user_model
@@ -5,7 +7,8 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
-
+from django.views.generic import ListView
+from django.db.models import Q
 
 def AllPosts(request):
     latest_post_list = Posts.objects.order_by("-date_posted")[:10]
@@ -68,3 +71,13 @@ def DeletePost(request, id):
         return render(request,'home.html')
     return HttpResponseRedirect(reverse('posts:all'))
 
+def SearchAll(request):
+
+    query = request.GET.get("q")
+    users = get_user_model().objects.filter(username__contains=query)
+    print(users)
+    object_list = Posts.objects.filter(
+        Q(trip_title__contains=query) | Q(trip_summery__contains=query)
+    ) 
+    # return(object_list)
+    return render(request, 'traverse/search_results.html',  {'object_list':object_list, 'users':users})
