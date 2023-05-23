@@ -16,15 +16,15 @@ class Posts(models.Model):
     map_details = models.URLField(max_length=300, null=True, blank=True) 
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.__all__
+    def __str__(self) -> str:
+        return self.trip_title
     
 class Image(models.Model):
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='media/images', blank=True)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.__all__
     
 

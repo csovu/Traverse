@@ -32,3 +32,8 @@ class PostEditForm(forms.ModelForm):
         model = Posts
         fields = ['trip_title', 'trip_summery', 'trail_conditions', 'planning_info', 'other_details','location', 'map_details']
 
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['title', 'image']

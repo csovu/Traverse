@@ -16,14 +16,23 @@ class CustomUserChangeForm(UserChangeForm):
         model = CustomUser
         fields = ('username', 'email')
 
+# class createEditForm(forms.ModelForm):
+#     def __init__(self, *args, **kwargs):
+#         super(createEditForm, self).__init__(*args, **kwargs)
+#         self.helper = FormHelper()
+#         self.helper.add_input(Submit('save', "Save changes", css_class = 'btn-success'))
+    
+#     class Meta:
+#         model = CustomUser
+#         fields = ['location', 'about', 'profile_picture']
+
 
 class AccountEditForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(AccountEditForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.add_input(Submit('save', "Save changes", css_class = 'btn-success'))
-       
-
+    
     class Meta:
         model = CustomUser
         fields = ['location', 'about', 'profile_picture']

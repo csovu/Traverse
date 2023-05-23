@@ -7,12 +7,24 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
-from django.views.generic import ListView
+from django.views.generic import DetailView
 from django.db.models import Q
 
 def AllPosts(request):
     latest_post_list = Posts.objects.order_by("-date_posted")[:10]
     return render(request,'home.html', {'latest_post_list':latest_post_list})
+
+
+def Userprofile(request, user_id):
+    selected_user = get_user_model().objects.get(pk=user_id)
+    user_posts = Posts.objects.filter(user = selected_user)
+    return render(request,'traverse/profile.html', {'user_posts':user_posts, 'selected_user':selected_user})
+
+
+
+def SinglePost(request, id):
+    onepost = Posts.objects.filter(id=id)
+    return render(request,'traverse/singlepost.html', {'onepost':onepost})
 
 
 @login_required
@@ -31,20 +43,6 @@ def CreatePost(request):
     return render(request, 'traverse/create.html',  {'form':form, 'user':user})
 
 
-def Userprofile(request, user_id):
-    selected_user = get_user_model().objects.get(pk=user_id)
-    user_posts = Posts.objects.filter(user = selected_user)
-    return render(request,'traverse/profile.html', {'user_posts':user_posts, 'selected_user':selected_user})
-
-
-def myAccount(request):
-    user_account = get_user_model().objects.get(pk=request.user.id)
-    return render(request, 'traverse/myaccount.html', {'user_account':user_account})
-
-def SinglePost(request, id):
-    onepost = Posts.objects.filter(id=id)
-    return render(request,'traverse/singlepost.html', {'onepost':onepost})
-
 @login_required
 def EditPost(request, id):
     post = Posts.objects.get(pk=id)
@@ -61,6 +59,7 @@ def EditPost(request, id):
         form = PostEditForm(instance=post)
     return render(request, 'traverse/editpost.html',  {'form':form, 'post':post, 'user':user})
 
+
 @login_required
 def DeletePost(request, id):
     user = get_user_model().objects.get(pk=request.user.id)
@@ -71,13 +70,25 @@ def DeletePost(request, id):
         return render(request,'home.html')
     return HttpResponseRedirect(reverse('posts:all'))
 
-def SearchAll(request):
 
+def SearchAll(request):
     query = request.GET.get("q")
     users = get_user_model().objects.filter(username__contains=query)
     print(users)
     object_list = Posts.objects.filter(
         Q(trip_title__contains=query) | Q(trip_summery__contains=query)
     ) 
-    # return(object_list)
     return render(request, 'traverse/search_results.html',  {'object_list':object_list, 'users':users})
+
+
+# def image_upload(request):
+#     if request.method == 'POST':
+#         form = ImageForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             img_obj = form.instence
+#             return HttpResponseRedirect(reverse('posts:all'))
+        
+#         else:
+#             form = ImageForm()
+#         return render(request, 'traverse/post_pics.html', {'form':form, 'img_obj': img_obj})
