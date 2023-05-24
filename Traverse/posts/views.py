@@ -46,17 +46,21 @@ def SinglePost(request, id):
 
 def PostImages(request):
     user = get_user_model().objects.get(pk=request.user.id)
-    # post = Posts.objects.get(pk=id)
-    formset = ImageFormSet(request.POST or None, request.FILES)
-
-    if request.method == 'POST':
-
-        if formset.is_valid():
-            formset.instance = user
-            formset.save()
+    if request.method == 'GET':
+        formset = ImageFormSet(queryset=Image.objects.none())
+        createpost = CreatePostForm(request.GET or None)
+    elif request.method == 'POST':
+        formset = ImageFormSet(request.POST,request.FILES)
+        createpost = CreatePostForm(request.POST, instance = user)
+        if createpost.is_valid() and formset.is_valid():
+            new_post = createpost.save()
+            for form in formset:
+                image = form.save(commit=False)
+                image.new_post = new_post
+                image.save()
             return HttpResponseRedirect(reverse('posts:all'))
 
-    return render(request, 'traverse/create.html', {"formset":formset,'user':user})
+    return render(request, 'traverse/create.html', {"formset":formset,'createpost':createpost})
 
 
 @login_required
