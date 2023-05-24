@@ -2,7 +2,7 @@
 {%load static%}
 {% block content %}
 
-<a href="{% url 'posts:all' %}">Home</a>
+
 
 {%for post in onepost%}
             <div id="profile-posts">
@@ -16,6 +16,9 @@
                 <p>{{post.last_edited}} </p>
                 <p>{{post.location}} </p>
                 <p>{{post.map_details}} </p>
+
+            
+
                 {% if user.id == post.user.id%}
                     {% if user.is_authenticated %}
                     <a href="{% url 'posts:editpost' post.id %}">edit post</a>
@@ -23,5 +26,7 @@
                 {% endif %}
             </div>
         {%endfor%}
-
+        {% if formset%}
+        <img src="{{formset.image.url}}" alt="profile image" style="max-height:300px">
+        {%endif%}
 {% endblock %}

@@ -5,7 +5,3 @@
 # from posts.models import *
 
 
-# class AboutView(generics.RetrieveUpdateDestroyAPIView):
-#     serializer_class = UserSerializer
-#     queryset = UserSerializer
-

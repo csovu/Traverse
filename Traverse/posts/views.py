@@ -1,6 +1,6 @@
 from typing import Any
 from django.db.models.query import QuerySet
-from django.shortcuts import render, reverse, get_object_or_404
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from posts.models import *
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.views.generic import DetailView
 from django.db.models import Q
+from django.forms import modelformset_factory
 
 def AllPosts(request):
     latest_post_list = Posts.objects.order_by("-date_posted")[:10]
@@ -81,7 +82,9 @@ def SearchAll(request):
     return render(request, 'traverse/search_results.html',  {'object_list':object_list, 'users':users})
 
 
-# def image_upload(request):
+# def image_upload(request, id):
+#     post = Posts.objects.get(pk=id)
+#     user = get_user_model().objects.get(pk=request.user.id)
 #     if request.method == 'POST':
 #         form = ImageForm(request.POST, request.FILES)
 #         if form.is_valid():
@@ -91,4 +94,17 @@ def SearchAll(request):
         
 #         else:
 #             form = ImageForm()
-#         return render(request, 'traverse/post_pics.html', {'form':form, 'img_obj': img_obj})
+#         return render(request, 'traverse/post_pics.html', {'form':form,'post':post, 'img_obj': img_obj})
+
+def PostImages(request, id):
+    post = Posts.objects.get(pk=id)
+    formset = ImageFormSet(request.POST or None, request.FILES)
+
+    if request.method == 'POST':
+
+        if formset.is_valid():
+            formset.instance = post
+            formset.save()
+            return HttpResponseRedirect(reverse('posts:all'))
+
+    return render(request, 'traverse/post_images.html', {"formset":formset,'post':post})

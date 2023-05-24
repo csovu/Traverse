@@ -32,7 +32,7 @@ def addAbout(request):
 def EditAbout(request):
     user = request.user
     if request.method == 'POST':
-        form = AccountEditForm(request.POST, instance = user)
+        form = AccountEditForm(request.POST, request.FILES,instance = user)
         if form.is_valid():
             form.save()
         return HttpResponseRedirect(reverse('accounts:myaccount'))
