@@ -42,9 +42,10 @@ class ImageForm(forms.ModelForm):
 ImageFormSet = inlineformset_factory(
     Posts,
     Image,
-    form=ImageForm,
+    fields = ['trip_title', 'trip_summery', 'trail_conditions', 'planning_info', 'other_details','location', 'map_details'],
+    # form=ImageForm,
     min_num=1,
     extra=1,
     can_delete=False,
-    
+
 )

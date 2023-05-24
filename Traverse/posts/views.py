@@ -29,19 +29,34 @@ def SinglePost(request, id):
 
 
 @login_required
-def CreatePost(request):
-    user = get_user_model().objects.get(pk=request.user.id)
-    if request.method == 'POST':
-        form = CreatePostForm(request.POST)
-        if form.is_valid():
-            new_post = form.save(commit=False)
-            new_post.user = user
-            new_post.save()
-        return HttpResponseRedirect(reverse('posts:all'))
+# def CreatePost(request):
+#     user = get_user_model().objects.get(pk=request.user.id)
+#     if request.method == 'POST':
+#         form = CreatePostForm(request.POST)
+#         if form.is_valid():
+#             new_post = form.save(commit=False)
+#             new_post.user = user
+#             new_post.save()
+#         return HttpResponseRedirect(reverse('posts:all'))
 
-    else:
-        form = CreatePostForm()
-    return render(request, 'traverse/create.html',  {'form':form, 'user':user})
+#     else:
+#         form = CreatePostForm()
+#     return render(request, 'traverse/create.html',  {'form':form, 'user':user})
+
+
+def PostImages(request):
+    user = get_user_model().objects.get(pk=request.user.id)
+    # post = Posts.objects.get(pk=id)
+    formset = ImageFormSet(request.POST or None, request.FILES)
+
+    if request.method == 'POST':
+
+        if formset.is_valid():
+            formset.instance = user
+            formset.save()
+            return HttpResponseRedirect(reverse('posts:all'))
+
+    return render(request, 'traverse/create.html', {"formset":formset,'user':user})
 
 
 @login_required
@@ -81,30 +96,3 @@ def SearchAll(request):
     ) 
     return render(request, 'traverse/search_results.html',  {'object_list':object_list, 'users':users})
 
-
-# def image_upload(request, id):
-#     post = Posts.objects.get(pk=id)
-#     user = get_user_model().objects.get(pk=request.user.id)
-#     if request.method == 'POST':
-#         form = ImageForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             img_obj = form.instence
-#             return HttpResponseRedirect(reverse('posts:all'))
-        
-#         else:
-#             form = ImageForm()
-#         return render(request, 'traverse/post_pics.html', {'form':form,'post':post, 'img_obj': img_obj})
-
-def PostImages(request, id):
-    post = Posts.objects.get(pk=id)
-    formset = ImageFormSet(request.POST or None, request.FILES)
-
-    if request.method == 'POST':
-
-        if formset.is_valid():
-            formset.instance = post
-            formset.save()
-            return HttpResponseRedirect(reverse('posts:all'))
-
-    return render(request, 'traverse/post_images.html', {"formset":formset,'post':post})
