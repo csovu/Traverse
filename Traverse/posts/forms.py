@@ -39,7 +39,8 @@ class ImageForm(forms.ModelForm):
         fields = ['title', 'image']
 
 
-ImageFormSet = modelformset_factory(
+ImageFormSet = inlineformset_factory(
+    Posts,
     Image,
     form=ImageForm,
     min_num=0,

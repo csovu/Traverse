@@ -49,14 +49,19 @@ def PostImages(request):
     if request.method == 'GET':
         formset = ImageFormSet(queryset=Image.objects.none())
         createpost = CreatePostForm(request.GET or None)
+        
     elif request.method == 'POST':
         formset = ImageFormSet(request.POST,request.FILES)
-        createpost = CreatePostForm(request.POST, instance = user)
+        createpost = CreatePostForm(request.POST)
+
         if createpost.is_valid() and formset.is_valid():
-            new_post = createpost.save()
+        
+            post = createpost.save(commit=False)
+            post.user = user
+            post.save()
             for form in formset:
                 image = form.save(commit=False)
-                image.new_post = new_post
+                image.posts = post
                 image.save()
             return HttpResponseRedirect(reverse('posts:all'))
 
