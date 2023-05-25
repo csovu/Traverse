@@ -22,10 +22,10 @@ def Userprofile(request, user_id):
     return render(request,'traverse/profile.html', {'user_posts':user_posts, 'selected_user':selected_user})
 
 
-
 def SinglePost(request, id):
-    onepost = Posts.objects.filter(id=id)
-    return render(request,'traverse/singlepost.html', {'onepost':onepost})
+    post = Posts.objects.get(pk=id)
+    post_images = Image.objects.filter(posts_id = id)
+    return render(request,'traverse/singlepost.html', {'post':post, 'post_images':post_images})
 
 
 @login_required
@@ -43,7 +43,7 @@ def SinglePost(request, id):
 #         form = CreatePostForm()
 #     return render(request, 'traverse/create.html',  {'form':form, 'user':user})
 
-
+@login_required
 def PostImages(request):
     user = get_user_model().objects.get(pk=request.user.id)
     if request.method == 'GET':
@@ -61,6 +61,7 @@ def PostImages(request):
 
             for form in formset:
                 image = form.save(commit=False)
+                  # TODO: if statement to check image property validity
                 image.posts = post
                 image.save()
             return HttpResponseRedirect(reverse('posts:all'))
@@ -85,6 +86,7 @@ def EditPost(request, id):
 
             for form in imagesform:
                 image = form.save(commit=False)
+                 # TODO: if statement to check image property validity
                 image.posts = post
                 image.save()
         return HttpResponseRedirect(reverse('posts:all'))

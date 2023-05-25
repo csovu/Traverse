@@ -3,12 +3,14 @@
 {% block content %}
 <div id="myaccount-view">
     <p>My Account Information</p>
+
     {% if user_account.profile_picture %}
         <div id="profile-image"><img src="{{user_account.profile_picture.url}}" alt="profile image" style="max-height:300px">
         </div> 
         {% else %}
         <p>no profile image</p>
     {%endif%}
+    
     <p>User Name: {{user_account}}</p>
     <p>Location: {{user_account.location}}</p>
         {% if user_account.about %}
