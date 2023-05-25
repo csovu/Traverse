@@ -55,34 +55,43 @@ def PostImages(request):
         createpost = CreatePostForm(request.POST)
 
         if createpost.is_valid() and formset.is_valid():
-        
             post = createpost.save(commit=False)
             post.user = user
             post.save()
+
             for form in formset:
                 image = form.save(commit=False)
                 image.posts = post
                 image.save()
             return HttpResponseRedirect(reverse('posts:all'))
 
-    return render(request, 'traverse/create.html', {"formset":formset,'createpost':createpost})
+    return render(request, 'traverse/create.html', {'formset':formset,'createpost':createpost})
 
 
 @login_required
 def EditPost(request, id):
     post = Posts.objects.get(pk=id)
     user = get_user_model().objects.get(pk=request.user.id)
+    if request.method == 'GET':
+        imagesform = ImageFormSet(queryset=Image.objects.none())
+        postform = CreatePostForm(request.GET or None)
     if request.method == 'POST':
-        form = PostEditForm(request.POST, instance=post)
-        if form.is_valid():
-            edit_post = form.save(commit=False)
+        postform = PostEditForm(request.POST, instance=post)
+        imagesform = ImageFormSet(request.POST,request.FILES, instance=post)
+        if postform.is_valid() and imagesform.is_valid():
+            edit_post = postform.save(commit=False)
             edit_post.user = user
             edit_post.save()
+
+            for form in imagesform:
+                image = form.save(commit=False)
+                image.posts = post
+                image.save()
         return HttpResponseRedirect(reverse('posts:all'))
 
     else:
-        form = PostEditForm(instance=post)
-    return render(request, 'traverse/editpost.html',  {'form':form, 'post':post, 'user':user})
+        postform = PostEditForm(instance=post)
+    return render(request, 'traverse/editpost.html',  {'postform':postform, 'post':post, 'user':user, 'imagesform':imagesform})
 
 
 @login_required

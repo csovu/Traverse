@@ -17,7 +17,11 @@
                 <p>{{post.location}} </p>
                 <p>{{post.map_details}} </p>
 
-            
+
+
+                {% if postimages%}
+                <img src="{{postimages.url}}" alt="profile image" style="max-height:300px">
+                {%endif%}
 
                 {% if user.id == post.user.id%}
                     {% if user.is_authenticated %}
@@ -26,7 +30,5 @@
                 {% endif %}
             </div>
         {%endfor%}
-        {% if formset%}
-        <img src="{{formset.image.url}}" alt="profile image" style="max-height:300px">
-        {%endif%}
+
 {% endblock %}
