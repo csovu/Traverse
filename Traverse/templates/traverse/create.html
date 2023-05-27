@@ -1,16 +1,20 @@
+
+
 {% load static %}
 
 {% block content %}
-
+<a href="{% url 'posts:all' %}">Home</a>
 {% csrf_token %}
 
 <div id="new-report">
-    <form id="create-report" method="post">
-        <h1>New Report</h1>
-        {% load crispy_forms_tags %}
-        {% crispy form %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{createpost.as_p}}
+
+        {{ formset.as_p }}
+    <button>Submit</button>
     </form>
 </div>
-
 
 {% endblock %}

@@ -3,7 +3,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import (Submit, Button)
 from django.urls import reverse_lazy
 from posts.models import *
-
+from django.forms import inlineformset_factory, modelformset_factory
 
 class CreatePostForm(forms.ModelForm):
 
@@ -32,3 +32,19 @@ class PostEditForm(forms.ModelForm):
         model = Posts
         fields = ['trip_title', 'trip_summery', 'trail_conditions', 'planning_info', 'other_details','location', 'map_details']
 
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['title', 'image']
+
+
+ImageFormSet = inlineformset_factory(
+    Posts,
+    Image,
+    form=ImageForm,
+    min_num=0,
+    extra=1,
+    can_delete=False,
+
+)

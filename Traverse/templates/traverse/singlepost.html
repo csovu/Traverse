@@ -2,26 +2,40 @@
 {%load static%}
 {% block content %}
 
-<a href="{% url 'posts:all' %}">Home</a>
 
-{%for post in onepost%}
-            <div id="profile-posts">
-                <p>Trip by {{post.user}} </p>
-                <p>{{post.trip_title}} </p>
-                <p>{{post.trip_summery}}</p>
-                <p>{{post.trail_conditions}} </p>
-                <p>{{post.planning_info}} </p>
-                <p>{{post.other_details}} </p>
-                <p>{{post.date_posted}} </p>
-                <p>{{post.last_edited}} </p>
-                <p>{{post.location}} </p>
-                <p>{{post.map_details}} </p>
-                {% if user.id == post.user.id%}
-                    {% if user.is_authenticated %}
-                    <a href="{% url 'posts:editpost' post.id %}">edit post</a>
-                    {% endif %}
-                {% endif %}
-            </div>
-        {%endfor%}
+
+
+
+<div id="profile-posts">
+    <p>Trip by {{post.user}} </p>
+    <p>{{post.trip_title}} </p>
+    <p>{{post.trip_summery}}</p>
+    <p>{{post.trail_conditions}} </p>
+    <p>{{post.planning_info}} </p>
+    <p>{{post.other_details}} </p>
+    <p>{{post.date_posted}} </p>
+    <p>{{post.last_edited}} </p>
+    <p>{{post.location}} </p>
+    <p>{{post.map_details}} </p>
+
+{% for image in post.image_set.all%}
+<p>hello</p>
+<img src="{{ image.image.url }}" alt="" style="max-height:300px">
+{%endfor%}
+
+
+    
+    {% if user.id == post.user.id%}
+        {% if user.is_authenticated %}
+        <a href="{% url 'posts:editpost' post.id %}">edit post</a>
+        {% endif %}
+    {% endif %}
+</div>
+
+
+
+        
+        
+
 
 {% endblock %}

@@ -1,3 +1,12 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import *
+
+
+class ImageInline(admin.StackedInline):
+    model=Image
+
+class PostsAdmin(admin.ModelAdmin):
+    inlines = [ImageInline]
+
+admin.site.register(Posts)

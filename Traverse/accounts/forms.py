@@ -22,8 +22,7 @@ class AccountEditForm(forms.ModelForm):
         super(AccountEditForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.add_input(Submit('save', "Save changes", css_class = 'btn-success'))
-       
-
+    
     class Meta:
         model = CustomUser
         fields = ['location', 'about', 'profile_picture']

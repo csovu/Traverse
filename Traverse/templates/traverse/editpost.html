@@ -6,13 +6,16 @@
 
     {% if user.is_authenticated %}
         {% csrf_token %}
-        <div id="new-report">
-            <form id="create-report" method="post">
-                <h1>Edit post</h1>
-                {% load crispy_forms_tags %}
-                {% crispy form %}
-            </form> 
 
+        <div id="new-report">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+        
+                {{postform.as_p}}
+        
+                {{imagesform.as_p }}
+            <button>Submit</button>
+            </form>
         </div>
 {% endif %}
 

@@ -5,7 +5,7 @@
 {% csrf_token %}
 
 <div id="new-report">
-    <form id="create-report" method="post">
+    <form id="create-report" method="post"  enctype="multipart/form-data" >
         <h1>Edit Info</h1>
         {% load crispy_forms_tags %}
         {% crispy form %}
