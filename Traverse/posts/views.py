@@ -61,9 +61,12 @@ def PostImages(request):
 
             for form in formset:
                 image = form.save(commit=False)
-                  # TODO: if statement to check image property validity
-                image.posts = post
-                image.save()
+                # TODO: if statement to check image property validity, so a blank field will not be saved
+                if form.is_valid():
+                    image.posts = post
+                    image.save()
+                else:
+                    form = PostImages
             return HttpResponseRedirect(reverse('posts:all'))
 
     return render(request, 'traverse/create.html', {'formset':formset,'createpost':createpost})
@@ -86,9 +89,12 @@ def EditPost(request, id):
 
             for form in imagesform:
                 image = form.save(commit=False)
-                 # TODO: if statement to check image property validity
-                image.posts = post
-                image.save()
+                 # TODO: if statement to check image property validity, so a blank field will not be saved
+                if form.is_valid():
+                    image.posts = post
+                    image.save()
+                else:
+                    form = EditPost
         return HttpResponseRedirect(reverse('posts:all'))
 
     else:
