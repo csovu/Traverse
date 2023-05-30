@@ -13,7 +13,7 @@ urlpatterns = [
     path("create/", views.CreatePost, name="create"),
     path("post/<int:id>/", views.SinglePost, name="singlepost"),
     path("editpost/<int:id>/", views.EditPost, name="editpost"),
-    path("editpost/<int:id>/delete", views.DeletePost, name="deletepost"),
+    path("delete/<int:id>/", views.DeletePost, name="deletepost"),
 
     path("search/", views.SearchAll, name="search"),
 

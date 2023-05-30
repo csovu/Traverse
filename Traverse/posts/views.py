@@ -104,8 +104,9 @@ def EditPost(request, id):
 @login_required
 def DeletePost(request, id):
     user = get_user_model().objects.get(pk=request.user.id)
+    post = Posts.objects.get(pk=id)
     if user == post.user:
-        post = get_object_or_404(Posts, pk=id)
+        # post = get_object_or_404(Posts, pk=id)
         post.delete()
     else:
         return render(request,'home.html')
