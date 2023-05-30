@@ -7,14 +7,34 @@
 {% csrf_token %}
 
 <div id="new-report">
-    <form method="post" enctype="multipart/form-data">
+    <form id="form-container" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         {{createpost.as_p}}
-
+        <div class="image-form">
         {{ formset.as_p }}
+        </div>
     <button>Submit</button>
+    <button id="add-image" type="button">Add image</button>
     </form>
 </div>
+
+<script>
+    let imageForm = document.querySelectorAll(".image-form")
+    let container = document.querySelector("#form-container")
+    let addButton = document.querySelector("#add-image")
+
+    addButton.addEventListener('click', addForm)
+
+    function addForm(i){
+
+        i.preventDefault()
+        let newForm = imageForm[0].cloneNode(true)
+      
+        container.insertBefore(newForm, addButton)
+    }
+
+</script>
+
 
 {% endblock %}

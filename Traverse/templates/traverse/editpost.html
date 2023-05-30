@@ -5,16 +5,16 @@
 {% block content %}
 
     {% if user.is_authenticated %}
-        {% csrf_token %}
+
 
         <div id="new-report">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
         
                 {{postform.as_p}}
-        
-                {{imagesform.as_p }}
+                {{formset.as_p }}
             <button>Submit</button>
+            <button>Delete</button>
             </form>
         </div>
 {% endif %}

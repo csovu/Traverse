@@ -12,11 +12,14 @@
     <p>{{post.location}} </p>
     <p>{{post.map_details}} </p>
 
-    {% for image in post.image_set.all%}
 
-    <img src="{{ image.image.url }}" alt="" style="max-height:300px">
-    {%endfor%}
-    <p id="post-date">{{post.date_posted}}</p>
+        {% for image in post.image_set.all%}
+            {% if image.image%}
+            <img src="{{ image.image.url }}" alt="" style="max-height:300px">
+            {% endif %}
+            <p id="post-date">{{post.date_posted}}</p>
+  
+        {%endfor%} 
 
     {% if user.id == post.user.id%}
         {% if user.is_authenticated %}

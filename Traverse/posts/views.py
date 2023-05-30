@@ -12,7 +12,7 @@ from django.db.models import Q
 from django.forms import modelformset_factory
 
 def AllPosts(request):
-    latest_post_list = Posts.objects.order_by("-date_posted")[:10]
+    latest_post_list = Posts.objects.order_by("pk")
     return render(request,'home.html', {'latest_post_list':latest_post_list})
 
 
@@ -44,7 +44,7 @@ def SinglePost(request, id):
 #     return render(request, 'traverse/create.html',  {'form':form, 'user':user})
 
 @login_required
-def PostImages(request):
+def CreatePost(request):
     user = get_user_model().objects.get(pk=request.user.id)
     if request.method == 'GET':
         formset = ImageFormSet(queryset=Image.objects.none())
@@ -53,7 +53,7 @@ def PostImages(request):
     elif request.method == 'POST':
         formset = ImageFormSet(request.POST,request.FILES)
         createpost = CreatePostForm(request.POST)
-
+        
         if createpost.is_valid() and formset.is_valid():
             post = createpost.save(commit=False)
             post.user = user
@@ -61,12 +61,11 @@ def PostImages(request):
 
             for form in formset:
                 image = form.save(commit=False)
-                # TODO: if statement to check image property validity, so a blank field will not be saved
-                if form.is_valid():
-                    image.posts = post
-                    image.save()
-                else:
-                    form = PostImages
+                image.posts = post
+                image.save()
+            
+            else:
+                form = CreatePost
             return HttpResponseRedirect(reverse('posts:all'))
 
     return render(request, 'traverse/create.html', {'formset':formset,'createpost':createpost})
@@ -77,29 +76,29 @@ def EditPost(request, id):
     post = Posts.objects.get(pk=id)
     user = get_user_model().objects.get(pk=request.user.id)
     if request.method == 'GET':
-        imagesform = ImageFormSet(queryset=Image.objects.none())
+        formset = ImageFormSet(queryset=Image.objects.none())
         postform = CreatePostForm(request.GET or None)
     if request.method == 'POST':
         postform = PostEditForm(request.POST, instance=post)
-        imagesform = ImageFormSet(request.POST,request.FILES, instance=post)
-        if postform.is_valid() and imagesform.is_valid():
+        formset = ImageFormSet(request.POST,request.FILES, instance=post)
+        if postform.is_valid() and formset.is_valid():
             edit_post = postform.save(commit=False)
             edit_post.user = user
             edit_post.save()
 
-            for form in imagesform:
+            for form in formset:
                 image = form.save(commit=False)
-                 # TODO: if statement to check image property validity, so a blank field will not be saved
                 if form.is_valid():
                     image.posts = post
                     image.save()
+        
                 else:
                     form = EditPost
         return HttpResponseRedirect(reverse('posts:all'))
 
     else:
         postform = PostEditForm(instance=post)
-    return render(request, 'traverse/editpost.html',  {'postform':postform, 'post':post, 'user':user, 'imagesform':imagesform})
+    return render(request, 'traverse/editpost.html',  {'postform':postform, 'post':post, 'user':user, 'formset':formset})
 
 
 @login_required
