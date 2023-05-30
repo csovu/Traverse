@@ -63,7 +63,7 @@ def CreatePost(request):
                 image = form.save(commit=False)
                 image.posts = post
                 image.save()
-            
+        
             else:
                 form = CreatePost
             return HttpResponseRedirect(reverse('posts:all'))
@@ -91,7 +91,7 @@ def EditPost(request, id):
                 if form.is_valid():
                     image.posts = post
                     image.save()
-        
+                  
                 else:
                     form = EditPost
         return HttpResponseRedirect(reverse('posts:all'))
@@ -106,7 +106,6 @@ def DeletePost(request, id):
     user = get_user_model().objects.get(pk=request.user.id)
     post = Posts.objects.get(pk=id)
     if user == post.user:
-        # post = get_object_or_404(Posts, pk=id)
         post.delete()
     else:
         return render(request,'home.html')
@@ -122,3 +121,8 @@ def SearchAll(request):
     ) 
     return render(request, 'traverse/search_results.html',  {'object_list':object_list, 'users':users})
 
+@login_required
+def DeleteImage(request, id):
+    image = Image.objects.get(pk=id)
+    image.delete()
+    return HttpResponseRedirect(reverse('posts:all'))

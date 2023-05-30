@@ -14,6 +14,7 @@ urlpatterns = [
     path("post/<int:id>/", views.SinglePost, name="singlepost"),
     path("editpost/<int:id>/", views.EditPost, name="editpost"),
     path("delete/<int:id>/", views.DeletePost, name="deletepost"),
+    path("deleteimage/<int:id>/", views.DeleteImage, name="deleteimage"),
 
     path("search/", views.SearchAll, name="search"),
 

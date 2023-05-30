@@ -21,6 +21,14 @@
         
             </form>
         </div>
+        {% for image in post.image_set.all%}
+            {% if image.image%}
+                <img src="{{ image.image.url }}" alt="" style="max-height:300px">
+                <a href="{% url 'posts:deleteimage' image.id%}">Delete</a>
+            {% endif %}
+        <p id="post-date">{{post.date_posted}}</p>
+
+    {%endfor%} 
 {% endif %}
 
 
