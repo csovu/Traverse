@@ -1,15 +1,21 @@
 body {
-    background-color: rgba(143, 192, 233, 0.567);
-
+    background-color: rgba(179, 212, 238, 0.567);
+    font-family: 'Playfair Display', serif;
+}
+header{
+  background-color: #f7f9f9;
+  padding-bottom: 3.5em;
+  padding-top: 1.5em;
 }
 
-header {
+#header{
     display: flex;
     align-items: center;
-    flex-direction: column;
-    font-family: 'Playfair Display', serif;
-    padding: 1.5em;
+    justify-content: center;
+    flex-direction: row;
+    /* padding: 1.5em; */
     text-decoration-color: #000000;
+    background-color: #f7f9f9;
 }
 
 .greeting {
@@ -21,67 +27,68 @@ header {
 }
 
 #new-report {
-    background-color: rgb(93, 91, 121);
+    background-color: rgb(206, 203, 247);
 }
 
 
 #latest_posts {
   display: flex;
   flex-direction: column;   
-  padding-top: 1.5em;
+  padding: 2em;
+
 }
 
 .post {
+    background-color: #f7f9f9;
     border:solid ;
     padding: 1em;
     border-radius: .2em;
     border-width: 1px ;
-    justify-content: space-around;
-}
-#login-page{
-    padding: 1em;
-}
-#myaccount-view{
-    padding: 1.5em;
+    margin-bottom: 1rem;
 }
 
-li {
-    float: left;
-  }
-#nav-button {
-    background-color: #f7f9f9;
 
-}
 .dropdown {
-    display: inline-block;
+    display: block;
     position: absolute;
-    width: 100%;
+    /* width: 100%; */
     /* position: fixed; */
- 
-
+    /* padding: 0px; */
+    background-color: #f7f9f9;
   }
-  .dropdown-content {
+
+.dropdown-content {
     display: none;
     position: relative;
     width: 100%;
-    overflow: auto;
-    /* box-shadow: 0px 10px 10px 0px rgba(95, 93, 93, 0.4); */
-    background-color: #f7f9f9;
-  }
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  .dropdown-content a {
-    display: block;
-    color: #000000;
-    padding: 5px;
-    text-decoration: none;
-  }
-  .dropdown-content a:hover {
-    color: #100808;
+    overflow: visible;
     background-color: #f7f9f9;
   }
 
+.dropdown:hover  .dropdown-content {
+    display:block;
+
+  }
+.dropdown-content a {
+    display: block;
+    color: #000000;
+    padding: 5px;
+  }
+  /* .dropdown-content a:hover {
+    color: #100808;
+    background-color: #f7f9f9;
+  } */
+
+
+#profile-posts {
+  padding-top: 5em;
+  padding-left: 1em;
+}
+#trip-title,
+#user {
+  display: flex;
+  justify-content: center;
+}
 @media screen and (min-width:650px) {
 
 }
