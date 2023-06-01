@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.views.generic import DetailView
 from django.db.models import Q
-from django.forms import modelformset_factory
+from django.forms import inlineformset_factory
 
 def AllPosts(request):
     latest_post_list = Posts.objects.order_by("pk")
@@ -47,25 +47,23 @@ def SinglePost(request, id):
 def CreatePost(request):
     user = get_user_model().objects.get(pk=request.user.id)
     if request.method == 'GET':
-        formset = ImageFormSet(queryset=Image.objects.none())
+        formset = ImageFormSet()
         createpost = CreatePostForm(request.GET or None)
         
     elif request.method == 'POST':
         formset = ImageFormSet(request.POST,request.FILES)
         createpost = CreatePostForm(request.POST)
-        
+        print(formset)
         if createpost.is_valid() and formset.is_valid():
             post = createpost.save(commit=False)
             post.user = user
             post.save()
 
-            for form in formset:
-                image = form.save(commit=False)
+            images = formset.save(commit=False)
+            for image in images:
                 image.posts = post
                 image.save()
-        
-            else:
-                form = CreatePost
+                print('!!!!!!!!!!!!!!!!!!!')
             return HttpResponseRedirect(reverse('posts:all'))
 
     return render(request, 'traverse/create.html', {'formset':formset,'createpost':createpost})
@@ -76,17 +74,17 @@ def EditPost(request, id):
     post = Posts.objects.get(pk=id)
     user = get_user_model().objects.get(pk=request.user.id)
     if request.method == 'GET':
-        formset = ImageFormSet(queryset=Image.objects.none())
+        imagesform = ImageFormSet(queryset=Image.objects.none())
         postform = CreatePostForm(request.GET or None)
     if request.method == 'POST':
         postform = PostEditForm(request.POST, instance=post)
-        formset = ImageFormSet(request.POST,request.FILES, instance=post)
-        if postform.is_valid() and formset.is_valid():
+        imagesform = ImageFormSet(request.POST,request.FILES, instance=post)
+        if postform.is_valid() and imagesform.is_valid():
             edit_post = postform.save(commit=False)
             edit_post.user = user
             edit_post.save()
 
-            for form in formset:
+            for form in imagesform:
                 image = form.save(commit=False)
                 if form.is_valid():
                     image.posts = post
@@ -98,7 +96,7 @@ def EditPost(request, id):
 
     else:
         postform = PostEditForm(instance=post)
-    return render(request, 'traverse/editpost.html',  {'postform':postform, 'post':post, 'user':user, 'formset':formset})
+    return render(request, 'traverse/editpost.html',  {'postform':postform, 'post':post, 'user':user, 'imagesform':imagesform})
 
 
 @login_required
