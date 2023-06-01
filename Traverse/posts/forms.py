@@ -45,8 +45,8 @@ ImageFormSet = inlineformset_factory(
     Posts,
     Image,
     form=ImageForm,
- 
-    extra=1,
+    min_num=1,
+    extra=0,
     can_delete=False,
 
 )

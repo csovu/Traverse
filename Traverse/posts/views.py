@@ -53,7 +53,7 @@ def CreatePost(request):
     elif request.method == 'POST':
         formset = ImageFormSet(request.POST,request.FILES)
         createpost = CreatePostForm(request.POST)
-        print(formset)
+
         if createpost.is_valid() and formset.is_valid():
             post = createpost.save(commit=False)
             post.user = user
@@ -63,7 +63,7 @@ def CreatePost(request):
             for image in images:
                 image.posts = post
                 image.save()
-                print('!!!!!!!!!!!!!!!!!!!')
+
             return HttpResponseRedirect(reverse('posts:all'))
 
     return render(request, 'traverse/create.html', {'formset':formset,'createpost':createpost})

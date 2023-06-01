@@ -13,9 +13,9 @@
             {{createpost.as_p}}
 
             {{formset.management_form}}
-            {% for form in formset%}
+            {% for form in formset.forms%}
                 <div class="image-form">
-                {{ formset.as_p }}
+                {{ form.as_p }}
                 </div>
             {% endfor %}
     
