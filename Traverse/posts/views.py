@@ -84,14 +84,11 @@ def EditPost(request, id):
             edit_post.user = user
             edit_post.save()
 
-            for form in imagesform:
-                image = form.save(commit=False)
-                if form.is_valid():
-                    image.posts = post
-                    image.save()
+            images = imagesform.save(commit=False)
+            for image in images:
+                image.posts = post
+                image.save()
                   
-                else:
-                    form = EditPost
         return HttpResponseRedirect(reverse('posts:all'))
 
     else:

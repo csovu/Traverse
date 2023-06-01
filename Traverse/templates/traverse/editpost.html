@@ -12,9 +12,16 @@
                 {% csrf_token %}
         
                 {{postform.as_p}}
-                <div class="image-form">
-                {{imagesform.as_p }}
-                </div>
+
+
+                {{imagesform.management_form}}
+                {% for form in imagesform.forms%}
+                    <div class="image-form">
+                    {{ form.as_p }}
+                    </div>
+                {% endfor %}
+
+
             <button>Submit</button>
             <button id="add-image" type="button">Add image</button>
             <a href="{% url 'posts:deletepost' post.id%}">Delete</a>
@@ -33,19 +40,27 @@
 
 
 
+
 <script>
-    let imageForm = document.querySelectorAll(".image-form")
+    let image = document.querySelectorAll(".image-form")
     let container = document.querySelector("#form-container")
     let addButton = document.querySelector("#add-image")
+    let totalForms = document.querySelector("#id_image_set-TOTAL_FORMS")
 
+    let formNum = image.length-1 
     addButton.addEventListener('click', addForm)
 
     function addForm(i){
-
         i.preventDefault()
-        let newForm = imageForm[0].cloneNode(true)
-      
+
+        let newForm = image[0].cloneNode(true) 
+        let formRegex = RegExp(`image_set-(\\d){1}-`,'g') 
+
+        formNum++
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `image_set-${formNum}-`)
         container.insertBefore(newForm, addButton)
+
+        totalForms.setAttribute('value', `${formNum+1}`)
     }
 
 </script>
