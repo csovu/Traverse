@@ -9,10 +9,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.views.generic import DetailView
 from django.db.models import Q
-from django.forms import modelformset_factory
+from django.forms import inlineformset_factory
 
 def AllPosts(request):
-    latest_post_list = Posts.objects.order_by("-date_posted")[:10]
+    latest_post_list = Posts.objects.order_by("pk")
     return render(request,'home.html', {'latest_post_list':latest_post_list})
 
 
@@ -44,10 +44,10 @@ def SinglePost(request, id):
 #     return render(request, 'traverse/create.html',  {'form':form, 'user':user})
 
 @login_required
-def PostImages(request):
+def CreatePost(request):
     user = get_user_model().objects.get(pk=request.user.id)
     if request.method == 'GET':
-        formset = ImageFormSet(queryset=Image.objects.none())
+        formset = ImageFormSet()
         createpost = CreatePostForm(request.GET or None)
         
     elif request.method == 'POST':
@@ -59,14 +59,11 @@ def PostImages(request):
             post.user = user
             post.save()
 
-            for form in formset:
-                image = form.save(commit=False)
-                # TODO: if statement to check image property validity, so a blank field will not be saved
-                if form.is_valid():
-                    image.posts = post
-                    image.save()
-                else:
-                    form = PostImages
+            images = formset.save(commit=False)
+            for image in images:
+                image.posts = post
+                image.save()
+
             return HttpResponseRedirect(reverse('posts:all'))
 
     return render(request, 'traverse/create.html', {'formset':formset,'createpost':createpost})
@@ -87,14 +84,11 @@ def EditPost(request, id):
             edit_post.user = user
             edit_post.save()
 
-            for form in imagesform:
-                image = form.save(commit=False)
-                 # TODO: if statement to check image property validity, so a blank field will not be saved
-                if form.is_valid():
-                    image.posts = post
-                    image.save()
-                else:
-                    form = EditPost
+            images = imagesform.save(commit=False)
+            for image in images:
+                image.posts = post
+                image.save()
+                  
         return HttpResponseRedirect(reverse('posts:all'))
 
     else:
@@ -105,8 +99,8 @@ def EditPost(request, id):
 @login_required
 def DeletePost(request, id):
     user = get_user_model().objects.get(pk=request.user.id)
+    post = Posts.objects.get(pk=id)
     if user == post.user:
-        post = get_object_or_404(Posts, pk=id)
         post.delete()
     else:
         return render(request,'home.html')
@@ -122,3 +116,8 @@ def SearchAll(request):
     ) 
     return render(request, 'traverse/search_results.html',  {'object_list':object_list, 'users':users})
 
+@login_required
+def DeleteImage(request, id):
+    image = Image.objects.get(pk=id)
+    image.delete()
+    return HttpResponseRedirect(reverse('posts:all'))

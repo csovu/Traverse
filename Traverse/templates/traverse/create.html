@@ -4,17 +4,53 @@
 
 {% block content %}
 <a href="{% url 'posts:all' %}">Home</a>
-{% csrf_token %}
+
 
 <div id="new-report">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+    <form id="form-container" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
-        {{createpost.as_p}}
+            {{createpost.as_p}}
 
-        {{ formset.as_p }}
-    <button>Submit</button>
+            {{formset.management_form}}
+            {% for form in formset.forms%}
+                <div class="image-form">
+                {{ form.as_p }}
+                </div>
+            {% endfor %}
+    
+       
+       
+        <button id="add-image" type="button">Add image</button>
+        <button type="submit">Submit</button>
     </form>
 </div>
 
+<script>
+    let image = document.querySelectorAll(".image-form")
+    let container = document.querySelector("#form-container")
+    let addButton = document.querySelector("#add-image")
+    let totalForms = document.querySelector("#id_image_set-TOTAL_FORMS")
+
+    let formNum = image.length-1 
+    addButton.addEventListener('click', addForm)
+
+    function addForm(i){
+        i.preventDefault()
+
+        let newForm = image[0].cloneNode(true) 
+        let formRegex = RegExp(`image_set-(\\d){1}-`,'g') 
+
+        formNum++
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `image_set-${formNum}-`)
+        container.insertBefore(newForm, addButton)
+
+        totalForms.setAttribute('value', `${formNum+1}`)
+    }
+
+</script>
+
+
 {% endblock %}
+
+<!-- javascript add-form-button tutorial: https://www.brennantymrak.com/articles/django-dynamic-formsets-javascript -->

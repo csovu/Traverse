@@ -56,7 +56,7 @@
         </div>  
     </header>
     {% block content %}
-     
+    <a href="{% url 'posts:create' %}">Create Report</a>
     <div id="latest_posts">
         {% if latest_post_list%}
             <p id="home_reports">Latest Trip Reports</p>
