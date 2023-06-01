@@ -12,7 +12,7 @@ from django.db.models import Q
 from django.forms import inlineformset_factory
 
 def AllPosts(request):
-    latest_post_list = Posts.objects.order_by("pk")
+    latest_post_list = Posts.objects.order_by("-pk")
     return render(request,'home.html', {'latest_post_list':latest_post_list})
 
 
@@ -89,7 +89,7 @@ def EditPost(request, id):
                 image.posts = post
                 image.save()
                   
-        return HttpResponseRedirect(reverse('posts:all'))
+        return redirect(reverse('posts:singlepost', args=[post.id]))
 
     else:
         postform = PostEditForm(instance=post)
@@ -118,6 +118,7 @@ def SearchAll(request):
 
 @login_required
 def DeleteImage(request, id):
+    post = Image.objects.get(posts_id=posts_id)
     image = Image.objects.get(pk=id)
     image.delete()
-    return HttpResponseRedirect(reverse('posts:all'))
+    return redirect(reverse('posts:editpost', args=[post.id]))

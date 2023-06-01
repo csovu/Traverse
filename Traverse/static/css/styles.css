@@ -84,11 +84,61 @@ header{
   padding-top: 5em;
   padding-left: 1em;
 }
+
 #trip-title,
 #user {
   display: flex;
   justify-content: center;
 }
+
+.search-result {
+  background-color: #f7f9f9;
+  border:solid ;
+  padding: 1em;
+  border-radius: .2em;
+  border-width: 1px ;
+  margin-bottom: 1rem;
+}
+#account-title{
+  padding: .5em;
+}
+#myaccount-view{
+  display: flex;
+  justify-content: space-around;
+  border: 2px solid #3e3a3a;
+  padding: 1em;
+  border-radius: .2em;
+  border-width: 1px ;
+  margin: 1.5rem;
+}
+#myaccount-info {
+  background-color: #f7f9f9;
+  border:solid ;
+  padding: 1.5em;
+  border-radius: .2em;
+  border-width: 1px ;
+  margin-bottom: 1rem;
+}
+#profile-image{
+  border: 1px solid #3e3a3a;
+  padding: 1.2em;
+  border-radius: 3%;
+  background-color: #3e3a3a2b;
+}
+#profile-posts{
+  background-color: #f7f9f9;
+  border:solid ;
+  padding: 1em;
+  border-radius: .2em;
+  border-width: 1px ;
+  margin: 1rem;
+}
+#posts-by{
+  display: flex;
+  padding: 1em;
+  justify-content: center;
+}
+
 @media screen and (min-width:650px) {
 
 }

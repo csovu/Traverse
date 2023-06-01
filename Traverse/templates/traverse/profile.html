@@ -2,11 +2,11 @@
 {%load static%}
 {% block content %}
 
-<a href="{% url 'posts:all' %}">Home</a>
+
 
     {%if user_posts %}
     <div id="user-profile">
-    <p>posts by: {{selected_user}} </p>
+    <h4 id="posts-by">posts by: {{selected_user}} </h4>
     </div>
         {%for post in user_posts%}
             <div id="profile-posts">
@@ -20,7 +20,5 @@
     {% else %}
     <p>This user has no Reports!</p>
     {%endif%}
-
-
 
 {% endblock %}
