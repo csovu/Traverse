@@ -1,8 +1,10 @@
 body {
-    background-color: rgba(179, 212, 238, 0.567);
+    background-color: rgba(112, 139, 159, 0.567);
     font-family: 'Playfair Display', serif;
 }
 header{
+  color: #000000;
+  text-decoration: none;
   background-color: #f7f9f9;
   padding-bottom: 3.5em;
   padding-top: 1.5em;
@@ -27,15 +29,33 @@ header{
 }
 
 #new-report {
-    background-color: rgb(206, 203, 247);
+  padding: 2.5em;
 }
 
+#add-image {
+  padding: .3em;
+}
+#save-post {
+  padding: .3em;
+}
+
+#edit-post-buttons{
+  display: flex;
+  padding: .3em;
+  justify-content: space-evenly;
+}
+
+
+#delete_post{
+  display: flex;
+  align-items:center;
+  color: #f7f9f9;
+}
 
 #latest_posts {
   display: flex;
   flex-direction: column;   
   padding: 2em;
-
 }
 
 .post {
@@ -84,11 +104,20 @@ header{
   padding-top: 5em;
   padding-left: 1em;
 }
-
+#post-date,
 #trip-title,
 #user {
   display: flex;
   justify-content: center;
+}
+#post-date{
+  font-size: .8em;
+}
+
+#edit-inpost-button{
+  display: flex;
+  justify-content: center;
+  color: #f7f9f9;
 }
 
 .search-result {

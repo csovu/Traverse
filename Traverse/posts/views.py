@@ -1,6 +1,6 @@
 from typing import Any
 from django.db.models.query import QuerySet
-from django.shortcuts import render, reverse, redirect, get_object_or_404
+from django.shortcuts import render, reverse, redirect
 from posts.models import *
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.views.generic import DetailView
 from django.db.models import Q
-from django.forms import inlineformset_factory
+
 
 def AllPosts(request):
     latest_post_list = Posts.objects.order_by("-pk")
@@ -27,21 +27,6 @@ def SinglePost(request, id):
     post_images = Image.objects.filter(posts_id = id)
     return render(request,'traverse/singlepost.html', {'post':post, 'post_images':post_images})
 
-
-@login_required
-# def CreatePost(request):
-#     user = get_user_model().objects.get(pk=request.user.id)
-#     if request.method == 'POST':
-#         form = CreatePostForm(request.POST)
-#         if form.is_valid():
-#             new_post = form.save(commit=False)
-#             new_post.user = user
-#             new_post.save()
-#         return HttpResponseRedirect(reverse('posts:all'))
-
-#     else:
-#         form = CreatePostForm()
-#     return render(request, 'traverse/create.html',  {'form':form, 'user':user})
 
 @login_required
 def CreatePost(request):
@@ -117,8 +102,9 @@ def SearchAll(request):
     return render(request, 'traverse/search_results.html',  {'object_list':object_list, 'users':users})
 
 @login_required
-def DeleteImage(request, id):
-    post = Image.objects.get(posts_id=posts_id)
-    image = Image.objects.get(pk=id)
+def DeleteImage(request, img_id, posts_id):
+    post = Posts.objects.get(pk=posts_id)
+    image = Image.objects.get(pk=img_id)
     image.delete()
     return redirect(reverse('posts:editpost', args=[post.id]))
+
