@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(112, 139, 159, 0.567);
+    background-color: rgba(89, 163, 141, 0.337);
     font-family: 'Playfair Display', serif;
 }
 header{
@@ -7,7 +7,7 @@ header{
   text-decoration: none;
   background-color: #f7f9f9;
   padding-bottom: 3.5em;
-  padding-top: 1.5em;
+  /* padding-top: 1.5em; */
 }
 
 #header{
@@ -17,7 +17,9 @@ header{
     flex-direction: row;
     /* padding: 1.5em; */
     text-decoration-color: #000000;
-    background-color: #f7f9f9;
+    /* background-color: #ffffff; */
+    background-image: url('/static/header-background.jpeg');
+  
 }
 
 .greeting {
@@ -74,7 +76,7 @@ header{
     /* width: 100%; */
     /* position: fixed; */
     /* padding: 0px; */
-    background-color: #f7f9f9;
+    background-color: #ffffff;
   }
 
 .dropdown-content {
@@ -167,6 +169,13 @@ header{
   padding: 1em;
   justify-content: center;
 }
+
+#user-post-title,
+#user-post-date {
+  display: flex;
+  justify-content: center;
+}
+
 
 @media screen and (min-width:650px) {
 
