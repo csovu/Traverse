@@ -18,12 +18,10 @@
     {% if user.is_authenticated %}
 
 
-        <div id="new-report">
-            <form id="form-container"  method="post" enctype="multipart/form-data">
+        <div id="edit-report">
+            <form id="edit-form-container"  method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-        
                 {{postform.as_p}}
-
 
                 {{imagesform.management_form}}
                 {% for form in imagesform.forms%}
@@ -32,7 +30,7 @@
                     </div>
                 {% endfor %}
             <div id="edit-post-buttons">
-            <div id="edit-add-image"><button id="add-image" type="button" class="btn btn-primary">Add image</button></div>
+            <div id="edit-add-image"><button id="edit-image" type="button" class="btn btn-primary">Add image</button></div>
             <div id="save-edit"><button class="btn btn-success">Save Changes</button></div>
             <div id="delete_post_div" class="btn btn-danger"><a  id="delete_post" href="{% url 'posts:deletepost' post.id%}">Delete Post</a></div>
             </div>
@@ -43,10 +41,11 @@
         <div id="uploaded-images">
             {% for image in post.image_set.all%}
                 {% if image.image%}
-                    <img src="{{ image.image.url }}" alt="" style="max-height:300px">
-                    <a href="{% url 'posts:deleteimage' image.id post.id%}">Delete Image</a>
+                <div id="edit-uploaded-img">
+                    <img  src="{{ image.image.url }}" alt="" style="max-height:300px">
+                    <a id="delete-img-bttn" href="{% url 'posts:deleteimage' image.id post.id%}">Delete Image</a>
+                </div>
                 {% endif %}
-            <p id="post-date">{{post.date_posted}}</p>
         {%endfor%} 
        
         </div>
@@ -56,11 +55,11 @@
 
 <script>
     let image = document.querySelectorAll(".image-form")
-    let container = document.querySelector("#form-container")
-    let addButton = document.querySelector("#add-image")
+    let container = document.querySelector("#edit-form-container")
+    let addButton = document.querySelector("#edit-image")
     let totalForms = document.querySelector("#id_image_set-TOTAL_FORMS")
 
-    let formNum = image.length-1 
+    let formNum = image.length-0 
     addButton.addEventListener('click', addForm)
 
     function addForm(i){

@@ -4,7 +4,7 @@
 {% block content %}
 {% csrf_token %}
 
-<ul>
+<div id="results-page">
     <h4>Post Matches:</h4>
     {% if object_list%}
     
@@ -18,9 +18,9 @@
         {% else %}
         <p>No post matches found. </p>
     {%endif%}
-</ul>
 
-<ul>
+
+
     <h4>Username Matches: </h4>
 
     {% if users%}
@@ -30,7 +30,7 @@
         {% else %}
         <p>No username matches found. </p>
     {%endif%}
-</ul>
+</div>
 
 
 

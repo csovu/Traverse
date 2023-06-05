@@ -7,7 +7,7 @@
 
 
     {% if user_account.profile_picture %}
-        <div id="profile-image"><img src="{{user_account.profile_picture.url}}" alt="profile image" style="max-height:300px">
+        <div id="profile-image"><img id="user-img" src="{{user_account.profile_picture.url}}" alt="profile image" style="max-height:300px">
         </div> 
         {% else %}
         <p>no profile image</p>
@@ -21,9 +21,9 @@
             <a id="edit-info" href="{% url 'accounts:editabout' %}" class="button">Edit Info</a>
             
         {% else %}
-            <p>Add more about yourself!</p>
+
             <p><a id="edit-info" href="{% url 'posts:profile' user_account.id %}" class="button">My Posts</a></p>
-            <a href="{% url 'accounts:addabout' %}" class="button">Add Info</a>
+            <a href="{% url 'accounts:addabout' %}" class="button">Add Bio</a>
         {%endif%}
     </div>
 
