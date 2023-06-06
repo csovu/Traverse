@@ -12,12 +12,9 @@
 </head>
 <body>
     
-
 {% block content %}
 
     {% if user.is_authenticated %}
-
-
         <div id="edit-report">
             <form id="edit-form-container"  method="post" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -30,12 +27,9 @@
                     </div>
                 {% endfor %}
        
-            <button id="edit-image" type="button" class="btn btn-primary">Add image</button>
-            <div id="save-edit"><button class="btn btn-success">Save Changes</button></div>
-            <div id="delete-post-div" ><a type="button" class="btn btn-outline-danger" id="delete-post" href="{% url 'posts:deletepost' post.id%}">Delete Post</a></div>
-          
-       
-        
+                <button id="edit-image" type="button" class="btn btn-primary">Add image</button>
+                <div id="save-edit"><button class="btn btn-success">Save Changes</button></div>
+                <div id="delete-post-div" ><a type="button" class="btn btn-outline-danger" id="delete-post" href="{% url 'posts:deletepost' post.id%}">Delete Post</a></div>
             </form>
         </div>
         <div id="uploaded-images">
@@ -49,9 +43,7 @@
                 </div>
                 {% endif %}
         {%endfor%} 
-       
         </div>
-
 {% endif %}
 
 
@@ -76,7 +68,6 @@
 
         totalForms.setAttribute('value', `${formNum+1}`)
     }
-
 </script>
 {% endblock %}
 

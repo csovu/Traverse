@@ -2,6 +2,7 @@ body {
     background-color: rgba(89, 163, 141, 0.337);
     font-family: 'Playfair Display', serif;
 }
+
 #login-home-page,
 #create-account-signup{
   padding: 1.5em;
@@ -21,11 +22,12 @@ header{
     flex-direction: row;
     text-decoration-color: #000000;
     background-image: url('/static/header-background.jpeg');
-  
 }
+
 #home-reports {
   padding: 1em;
 }
+
 .greeting {
     display: flex;
 }
@@ -40,8 +42,8 @@ header{
 
 #add-image {
   padding: .3em;
-  
 }
+
 #save-post {
   padding: .3em;
 }
@@ -51,6 +53,7 @@ header{
   display: flex;
   margin: 1rem;
 }
+
 #save-edit {
   padding-bottom: 2em;
 }
@@ -70,7 +73,6 @@ header{
   box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
 }
 
-
 #latest-posts {
   display: flex;
   flex-direction: column;   
@@ -87,6 +89,7 @@ header{
     margin-bottom: 1rem;
     box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
 }
+
 #post-author,
 #trip-summery {
   font-size: 1.2em;
@@ -101,7 +104,7 @@ header{
     position: absolute;
     padding: .4em;
     background-image: url('/static/header-background.jpeg');
-  }
+}
 
 .dropdown-content {
     display: none;
@@ -110,19 +113,21 @@ header{
     overflow: visible;
     background-color: #f7f9f9;
     padding-left: .5em;
-  }
+}
+
 #search-menu{
   padding: .3em;
 }
 .dropdown:hover  .dropdown-content {
     display:block;
 
-  }
+}
+
 .dropdown-content a {
     display: block;
     color: #000000;
     padding: 8px;
-  }
+}
 
 #profile-posts {
   padding-top: 2em;
@@ -138,12 +143,15 @@ header{
   display: flex;
   justify-content: center;
 }
+
 #trip-title {
   padding: .5em;
 }
+
 #location {
   padding-bottom: 2em;
 }
+
 #post-date{
   font-size: .8em;
 }
@@ -153,6 +161,7 @@ header{
   justify-content: center;
   color: #f7f9f9;
 }
+
 #results-page{
   justify-content: baseline;
   padding: 1em;
@@ -165,7 +174,6 @@ header{
   border-radius: .2em;
   border-width: 1px ;
   margin-bottom: 1rem;
-
 }
 
 #account-title{
@@ -174,7 +182,6 @@ header{
 
 #myaccount-view{
   display: flex;
-  /* justify-content: space-around; */
   flex-direction: column;
   border: 2px solid #3e3a3a;
   padding: 1em;
@@ -198,11 +205,13 @@ header{
   padding: 1.2em;
   margin: 1rem;
 }
+
 #user-profile {
   display: flex;
   align-items: center;
   flex-direction: column;
  }
+
 #profile-image{
   border: 1px solid #3e3a3a;
   padding: 1.2em;
@@ -284,7 +293,6 @@ header{
   border-width: 1px ;
   margin: 1rem;
   box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
-
 }
 
 .appear {
@@ -315,17 +323,12 @@ padding-bottom: 2em;
 
 
 
-
-
-
-
-
-
 @media screen and (min-width:650px) {
 
 #home-reports{
   font-size: 1.8em;
 }
+
 #location,
 #post-date{
   font-size: 1.2em;
@@ -370,7 +373,6 @@ margin: .8rem;
   height: auto;
 }
 
-
 #post-author,
 #trip-summery {
   font-size: 1.4em;
@@ -379,23 +381,24 @@ margin: .8rem;
 #new-report {
   display: flex;
   justify-content:center;
+}
 
+#post {
+  margin: 2.5rem;
 }
 }
+
 
 
 @media screen and (min-width:1000px) {
 
 #latest-posts{
   display: flex;
-  padding: 3em;
+  padding: 2em;
 }
 
 #post {
   padding: 2em;
 }
-
-
-
 
 }

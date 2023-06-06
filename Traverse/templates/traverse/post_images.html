@@ -1,12 +1,10 @@
-
-
 {% load static %}
 {% block content %}
 
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-{{ formset.management_form }}
-{{ formset.as_p }}
-<button>Submit</button>
+    {{ formset.management_form }}
+    {{ formset.as_p }}
+    <button>Submit</button>
 </form>
 {% endblock %}
