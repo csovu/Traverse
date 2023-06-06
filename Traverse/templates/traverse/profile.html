@@ -3,29 +3,31 @@
 {% block content %}
 
 
-
+<div class="container appear">
     {%if user_posts %}
+    <div class="item">
     <div id="user-profile">
-    <h4 id="posts-by">posts by: {{selected_user}}</h4>
-    {% if selected_user.about%}
-        <p id="selected-user-about">About {{selected_user}}: {{selected_user.about}}</p>
-    {%endif%}
-    {% if selected_user.profile_picture%}
-        <img id="selected-user-picture" src="{{selected_user.profile_picture.url}}" alt="profile image" style="max-height:300px">
-    {%endif%}
+        <h4 id="posts-by">posts by: {{selected_user}}</h4>
+        {% if selected_user.about%}
+            <p id="selected-user-about">About {{selected_user}}: {{selected_user.about}}</p>
+        {%endif%}
+        {% if selected_user.profile_picture%}
+            <img id="selected-user-picture" src="{{selected_user.profile_picture.url}}" alt="profile image" style="max-height:300px">
+        {%endif%}
+        </div>
+            {%for post in user_posts%}
+                <div id="profile-posts">
+                    <p id="user-post-title">{{post.trip_title}}</p>
+                    <p id="user-post-date">{{post.date_posted}} </p>
+                    <p>location: {{post.location}} </p>
+                    <p>{{post.trip_summery}} </p>
+                    <a href="{% url 'posts:singlepost' post.id %}">see more {{post.post}}</a>
+                </div>
+            {%endfor%}
+        {% else %}
+        <p>This user has no Reports!</p>
+        {%endif%}
     </div>
-        {%for post in user_posts%}
-            <div id="profile-posts">
-                <p id="user-post-title">{{post.trip_title}}</p>
-                <p id="user-post-date">{{post.date_posted}} </p>
-                <p>location: {{post.location}} </p>
-                <p>{{post.trip_summery}} </p>
-                <a href="{% url 'posts:singlepost' post.id %}">see more {{post.post}}</a>
-            </div>
-        {%endfor%}
-    {% else %}
-    <p>This user has no Reports!</p>
-    {%endif%}
-
+</div>
 
 {% endblock %}
