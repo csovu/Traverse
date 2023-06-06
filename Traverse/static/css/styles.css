@@ -23,7 +23,9 @@ header{
     background-image: url('/static/header-background.jpeg');
   
 }
-
+#home-reports {
+  padding: 1em;
+}
 .greeting {
     display: flex;
 }
@@ -34,7 +36,6 @@ header{
 
 #new-report {
   padding: 2.5em;
-
 }
 
 #add-image {
@@ -90,6 +91,7 @@ header{
 #trip-summery {
   font-size: 1.2em;
 }
+
 .navbar-toggler{
   padding-bottom: .5em;
 }
@@ -131,6 +133,7 @@ header{
 #post-date,
 #trip-title,
 #location,
+#post-author,
 #user {
   display: flex;
   justify-content: center;
@@ -139,7 +142,7 @@ header{
   padding: .5em;
 }
 #location {
-  padding: .5em;
+  padding-bottom: 2em;
 }
 #post-date{
   font-size: .8em;
@@ -320,6 +323,14 @@ padding-bottom: 2em;
 
 @media screen and (min-width:650px) {
 
+#home-reports{
+  font-size: 1.8em;
+}
+#location,
+#post-date{
+  font-size: 1.2em;
+}
+
 #user-img{
   padding: 1em;
   max-width: 100%;
@@ -364,26 +375,27 @@ margin: .8rem;
 #trip-summery {
   font-size: 1.4em;
 }
-}
 
+#new-report {
+  display: flex;
+  justify-content:center;
+
+}
+}
 
 
 @media screen and (min-width:1000px) {
 
 #latest-posts{
   display: flex;
-  /* justify-content: center;
-  max-width: 2000px; */
-  padding: 5em;
+  padding: 3em;
 }
 
 #post {
   padding: 2em;
 }
-#post-author,
-#trip-summery {
-  font-size: 1.4em;
-}
+
+
 
 
 }
