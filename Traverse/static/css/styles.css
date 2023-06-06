@@ -37,10 +37,6 @@ header{
 
 }
 
-#create-buttons {
-  display: flex;
-  justify-content: space-evenly;
-}
 #add-image {
   padding: .3em;
   
@@ -49,37 +45,30 @@ header{
   padding: .3em;
 }
 
-#edit-post-buttons{
+#edit-image,
+#save-edit {
   display: flex;
-  padding: .3em;
-  justify-content: space-evenly;
+  margin: 1rem;
 }
+#save-edit {
+  padding-bottom: 2em;
+}
+
 #edit-report{
   padding: 1em;
 }
 
-
 #edit-uploaded-img{
-  justify-content: center;
   align-items: center;
   border:solid ;
   padding: 1em;
+  padding-bottom: .5em;
   border-radius: .2em;
   border-width: 1px ;
   margin-bottom: 1rem;
   box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
 }
 
-#delete-img-bttn{
-  padding: 1em;
-  align-items: center;
-}
-
-#delete_post{
-  display: flex;
-  align-items:center;
-  color: #f7f9f9;
-}
 
 #latest_posts {
   display: flex;
@@ -182,11 +171,12 @@ header{
   margin-bottom: 1rem;
   box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
 }
-#user-img{
 
+#user-img{
   padding: 1.2em;
   margin: 1rem;
 }
+
 #profile-image{
   border: 1px solid #3e3a3a;
   padding: 1.2em;
@@ -278,205 +268,29 @@ header{
 
 @media screen and (min-width:650px) {
 
-}
 
-
-
-
-
-
-
-@media screen and (min-width:1000px) {
-  body {
-    background-color: rgba(89, 163, 141, 0.337);
-    font-family: 'Playfair Display', serif;
-}
-header{
-  color: #000000;
-  text-decoration: none;
-  background-color: #f7f9f9;
-  padding-bottom: 3.5em;
-}
-
-#header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    text-decoration-color: #000000;
-    background-image: url('/static/header-background.jpeg');
-  
-}
-
-.greeting {
-    display: flex;
-}
-
-.auth {
-    word-spacing: 3px;
-}
-
-#new-report {
-  padding: 2.5em;
-}
-
-#add-image {
-  padding: .3em;
-}
-#save-post {
-  padding: .3em;
-}
-
-#edit-post-buttons{
-  display: flex;
-  padding: .3em;
-  justify-content: space-evenly;
-}
-
-
-#delete_post{
-  display: flex;
-  align-items:center;
-  color: #f7f9f9;
-}
-
-#latest_posts {
-  display: flex;
-  flex-direction: column;   
-  padding: 2em;
-  box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
-}
-
-.post {
-    background-color: #f7f9f9;
-    border:solid ;
-    padding: 1em;
-    border-radius: .2em;
-    border-width: 1px ;
-    margin-bottom: 1rem;
-    box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
-}
-
-
-.dropdown {
-    display: block;
-    position: absolute;
-    background-color: #ffffff;
-  }
-
-.dropdown-content {
-    display: none;
-    position: relative;
-    width: 100%;
-    overflow: visible;
-    background-color: #f7f9f9;
-  }
-
-.dropdown:hover  .dropdown-content {
-    display:block;
-
-  }
-.dropdown-content a {
-    display: block;
-    color: #000000;
-    padding: 5px;
-  }
-
-#profile-posts {
-  padding-top: 5em;
-  padding-left: 1em;
-  box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
-}
-#post-date,
-#trip-title,
-#user {
-  display: flex;
-  justify-content: center;
-}
-#post-date{
-  font-size: .8em;
-}
-
-#edit-inpost-button{
-  display: flex;
-  justify-content: center;
-  color: #f7f9f9;
-}
-
-.search-result {
-  background-color: #f7f9f9;
-  border:solid ;
+#user-img{
   padding: 1em;
-  border-radius: .2em;
-  border-width: 1px ;
-  margin-bottom: 1rem;
+  max-width: 100%;
+  height: auto;
 }
-#account-title{
-  padding: .5em;
+
+#profile-image{
+display: flex;
+width: 400px;
+justify-content: space-around;
+align-items: center;
+box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
+margin: .8rem;
 }
+
 #myaccount-view{
   display: flex;
-  justify-content: space-around;
-  border: 2px solid #3e3a3a;
-  padding: 1em;
-  border-radius: .2em;
-  border-width: 1px ;
-  margin: 1.5rem;
-  box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
-}
-#myaccount-info {
-  background-color: #f7f9f9;
-  border:solid ;
-  padding: 1.5em;
-  border-radius: .2em;
-  border-width: 1px ;
-  margin-bottom: 1rem;
-  box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
-}
-#profile-image{
-  border: 1px solid #3e3a3a;
-  padding: 1.2em;
-  border-radius: 3%;
-  background-color: #3e3a3a2b;
-}
-#profile-posts{
-  background-color: #f7f9f9;
-  border:solid ;
-  padding: 1em;
-  border-radius: .2em;
-  border-width: 1px ;
-  margin: 1rem;
-  box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
-}
-#posts-by{
-  display: flex;
-  padding: 1em;
+  flex-direction: row;
   justify-content: center;
-  
-}
-
-#user-post-title,
-#user-post-date {
-  display: flex;
-  justify-content: center;
-}
-
-#single-post-images{
-  display: flex;
-  width: 100%; 
-  object-fit: cover; 
-  object-position: bottom; 
-  justify-content: space-around;
-  flex-wrap: wrap;
+  width: auto;
   box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
   margin: .8rem;
-}
-.img{
-  border:solid ;
-  padding: 1em;
-  border-radius: .2em;
-  border-width: 1px ;
-  margin: 1rem;
 }
 
 #selected-user-about{
@@ -489,14 +303,22 @@ header{
 }
 
 #selected-user-picture{
-  display: flex;
-  border:solid ;
-  padding: 1em;
-  border-radius: .2em;
-  border-width: 1px ;
-  margin: 1rem;
-  box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
-
+  padding: 1.5em;
+  max-width: 100%;
+  height: auto;
 }
+ #user-profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+ }
+}
+
+
+
+@media screen and (min-width:1000px) {
+
+
 
 }
