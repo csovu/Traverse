@@ -95,9 +95,8 @@ def DeletePost(request, id):
 def SearchAll(request):
     query = request.GET.get("q")
     users = get_user_model().objects.filter(username__contains=query)
-    print(users)
     object_list = Posts.objects.filter(
-        Q(trip_title__contains=query) | Q(trip_summery__contains=query)
+        Q(trip_title__contains=query) | Q(trip_summery__contains=query) | Q(location__contains=query) | Q(planning_info__contains=query) | Q(other_details__contains=query)
     ) 
     return render(request, 'traverse/search_results.html',  {'object_list':object_list, 'users':users})
 

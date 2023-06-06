@@ -11,8 +11,9 @@
         {%for q in object_list%}
                 
         <div class="search-result">
-            <p>{{q.trip_title}}, <a href="{% url 'posts:singlepost' q.id %}">see more {{q.post}}</a></p>
-            <p>posted by:<a href="{% url 'posts:profile' q.user.id %}">{{q.user}}</a>, {{q.date_posted}}</p>
+            <h4>{{q.trip_title}} <a href="{% url 'posts:singlepost' q.id %}">see more {{q.post}}</a></h4>
+            <p><h6>{{q.location}}</h6></p>
+            <p>posted by: <a href="{% url 'posts:profile' q.user.id %}">{{q.user}}</a>, {{q.date_posted}}</p>
         </div>
             {%endfor%}
         {% else %}

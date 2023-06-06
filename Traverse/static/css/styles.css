@@ -123,16 +123,20 @@ header{
   }
 
 #profile-posts {
-  padding-top: 5em;
+  padding-top: 2em;
   padding-left: 1em;
   box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
 }
+
 #post-date,
 #trip-title,
 #location,
 #user {
   display: flex;
   justify-content: center;
+}
+#trip-title {
+  padding: .5em;
 }
 #location {
   padding: .5em;
@@ -191,7 +195,11 @@ header{
   padding: 1.2em;
   margin: 1rem;
 }
-
+#user-profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+ }
 #profile-image{
   border: 1px solid #3e3a3a;
   padding: 1.2em;
@@ -261,6 +269,7 @@ header{
   border-width: 1px ;
   margin: 1rem;
   box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
+  background-color:  #f7f9f9; ;
 }
 
 #selected-user-picture{
@@ -275,8 +284,6 @@ header{
 
 }
 
-
-
 .appear {
   transition: all 0.8s;
   opacity: 0;
@@ -289,13 +296,19 @@ header{
   transition-delay: 0.3s;
 }
 
-
-
 /* laod on-scroll tutorial: https://dev.to/miacan2021/fade-in-animation-on-scroll-with-intersectionobserver-vanilla-js-4p27 */
 
+.item{
+  padding-top: 2.5em;
+}
 
+.image-form{
+padding-bottom: 2em;
+}
 
-
+#post-form{
+  padding-bottom: 4em;
+}
 
 
 
@@ -345,12 +358,8 @@ margin: .8rem;
   max-width: 100%;
   height: auto;
 }
- #user-profile {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 
- }
+
 #post-author,
 #trip-summery {
   font-size: 1.4em;
