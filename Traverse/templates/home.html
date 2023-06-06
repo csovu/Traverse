@@ -18,8 +18,8 @@
 <body>
     
     <header>
-        <div id="header"><h1>Traverse</h1></div>
-        
+        <!-- <div id="header"><h1>Traverse</h1></div> -->
+        <div id="header"><img src="/static/logo.jpeg" alt="logo" width= "440" height="340"></div>
         <div class="dropdown">
             <nav  class="navbar navbar-expand-md navbar-light bg-light">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" >
@@ -56,17 +56,20 @@
         </div>  
     </header>
     {% block content %}
-    <a href="{% url 'posts:create' %}">Create Report</a>
-    <div id="latest_posts">
+   
+    <div id="latest-posts">
         {% if latest_post_list%}
-            <p id="home_reports">Latest Trip Reports</p>
+            <h4 id="home-reports">Latest Trip Reports</h4>
 
                 {%for post in latest_post_list%}
                 <div class="post">
                     <h2 id="trip-title">{{post.trip_title}}</h2>
-                    <h4>{{post.trip_summery}}</h4> -- <a href="{% url 'posts:singlepost' post.id %}">read more {{post.post}}</a>
+                    <h4 id="trip-summery">{{post.trip_summery}}</h4> -- <a href="{% url 'posts:singlepost' post.id %}">read more {{post.post}}</a>
                     <p id="post-author">posted by:<a href="{% url 'posts:profile' post.user.id %}"> {{post.user}}</a></p>
                     <p id="post-date">{{post.date_posted}}</p>
+                    <!-- {% for image in post.image_set.all%}
+                        <img src="{{ image.image.url }}" alt="" style="max-height:300px">
+                    {%endfor%}  -->
                 </div>
                     {%endfor%}
             

@@ -3,7 +3,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import (Submit, Button)
 from django.urls import reverse_lazy
 from posts.models import *
-from django.forms import inlineformset_factory, modelformset_factory
+from django.forms import inlineformset_factory
 # from crispy_forms.helper import FormHelper
 # from crispy_forms.layout import Submit
 
@@ -11,8 +11,30 @@ class CreatePostForm(forms.ModelForm):
 
     class Meta:
         model= Posts
-        fields = ['trip_title', 'trip_summery', 'trail_conditions', 'planning_info', 'other_details','location', 'map_details']
+        fields = ['trip_title','location', 'trip_summery', 'planning_info', 'other_details', 'map_details']
+        widgets ={
+              'trip_title': forms.TextInput(attrs={
+                'style': 'min-width: 400px;',
+        }),
+        'trip_summery': forms.TextInput(attrs={
+                'style': 'min-width: 400px;'
+                'min-height: 100px',
+        }),
+        'planning_info': forms.TextInput(attrs={
+                'style': 'min-width: 400px;'
+                'min-height: 100px',
+        }),
+        'other_details': forms.TextInput(attrs={
+            'placeholder': 'any other plannning or trip considerations',
+            'style': 'min-width: 400px;'
+            'min-height: 100px',
+        }),
+        'map_details': forms.TextInput(attrs={
+            'placeholder': 'Map Link',
+        }),
+        }
     def __init__(self, *args, **kwargs):
+    
     
         super(CreatePostForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
@@ -32,8 +54,28 @@ class PostEditForm(forms.ModelForm):
 
     class Meta:
         model = Posts
-        fields = ['trip_title', 'trip_summery', 'trail_conditions', 'planning_info', 'other_details','location', 'map_details']
-
+        fields = ['trip_title','location', 'trip_summery', 'planning_info', 'other_details', 'map_details']
+        widgets ={
+              'trip_title': forms.TextInput(attrs={
+                'style': 'min-width: 400px;',
+        }),
+        'trip_summery': forms.TextInput(attrs={
+                'style': 'min-width: 400px;'
+                'min-height: 100px',
+        }),
+        'planning_info': forms.TextInput(attrs={
+                'style': 'min-width: 400px;'
+                'min-height: 100px',
+        }),
+        'other_details': forms.TextInput(attrs={
+            'placeholder': 'any other plannning or trip considerations',
+            'style': 'min-width: 400px;'
+            'min-height: 100px',
+        }),
+        'map_details': forms.TextInput(attrs={
+            'placeholder': 'Map Link',
+        }),
+        }
 
 class ImageForm(forms.ModelForm):
     class Meta:

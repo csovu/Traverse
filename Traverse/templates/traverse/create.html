@@ -1,15 +1,10 @@
 
-
+{% extends 'home.html' %}
 {% load static %}
-
 {% block content %}
-<a href="{% url 'posts:all' %}">Home</a>
-
-
 <div id="new-report">
     <form id="form-container" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-
             {{createpost.as_p}}
 
             {{formset.management_form}}
@@ -19,10 +14,10 @@
                 </div>
             {% endfor %}
     
-       
-       
-        <button id="add-image" type="button">Add image</button>
-        <button type="submit">Submit</button>
+  
+        <div id="add-image"><button id="add-image" type="button" class="btn btn-primary">Add more images</button></div>
+        <div id="save-post"><button type="submit" class="btn btn-success">Save Post</button></div>
+     
     </form>
 </div>
 

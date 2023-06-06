@@ -1,34 +1,36 @@
+{% extends 'home.html' %}
 {% load static %}
 
 {% block content %}
 {% csrf_token %}
 
-<ul>
-{% if object_list%}
-    <p>Post Matches:</p>
-    {%for q in object_list%}
-               
-    <div class="search-result">
-        <p >{{q.trip_title}}...<a href="{% url 'posts:singlepost' q.id %}">see more {{q.post}}</a></p>
-        <p>posted by:<a href="{% url 'posts:profile' q.user.id %}">{{q.user}}</a>, {{q.date_posted}}</p>
-    </div>
+<div id="results-page">
+    <h4>Post Matches:</h4>
+    {% if object_list%}
+    
+        {%for q in object_list%}
+                
+        <div class="search-result">
+            <p>{{q.trip_title}}, <a href="{% url 'posts:singlepost' q.id %}">see more {{q.post}}</a></p>
+            <p>posted by:<a href="{% url 'posts:profile' q.user.id %}">{{q.user}}</a>, {{q.date_posted}}</p>
+        </div>
+            {%endfor%}
+        {% else %}
+        <p>No post matches found. </p>
+    {%endif%}
+
+
+
+    <h4>Username Matches: </h4>
+
+    {% if users%}
+        {%for q in users%}
+            <li><a href="{% url 'posts:profile' q.id %}"> {{q}}</a></li>
         {%endfor%}
-    {% else %}
-    <p>No post matches found. </p>
-{%endif%}
-</ul>
-
-<ul>
-{% if users%}
-<p>User Matches: </p>
-    {%for q in users%}
-
-        <li>{{q}}</li>
-    {%endfor%}
-    {% else %}
-    <p>No user matches found. </p>
-{%endif%}
-</ul>
+        {% else %}
+        <p>No username matches found. </p>
+    {%endif%}
+</div>
 
 
 
