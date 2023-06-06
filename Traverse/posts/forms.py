@@ -80,8 +80,12 @@ class PostEditForm(forms.ModelForm):
 class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        fields = ['image']
-
+        fields = ['title','image']
+        widgets ={
+            'title': forms.TextInput(attrs={
+            'placeholder': 'image title'
+        })
+        }
 
 ImageFormSet = inlineformset_factory(
     Posts,

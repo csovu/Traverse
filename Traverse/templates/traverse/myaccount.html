@@ -9,8 +9,7 @@
     {% if user_account.profile_picture %}
         <div id="profile-image"><img id="user-img" src="{{user_account.profile_picture.url}}" alt="profile image" style="max-height:300px">
         </div> 
-        {% else %}
-        <p>no profile image</p>
+       
     {%endif%}
     <div id="myaccount-info">
     <p>User Name: {{user_account}}</p>
@@ -23,7 +22,7 @@
         {% else %}
 
             <p><a id="edit-info" href="{% url 'posts:profile' user_account.id %}" class="button">My Posts</a></p>
-            <a href="{% url 'accounts:addabout' %}" class="button">Add Bio</a>
+            <a href="{% url 'accounts:addabout' %}" class="button">Add Bio and Image</a>
         {%endif%}
     </div>
 

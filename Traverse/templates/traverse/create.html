@@ -5,8 +5,9 @@
 <div id="new-report">
     <form id="form-container" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{createpost.as_p}}
-
+            <div id="post-form">
+                {{createpost.as_p}}
+            </div>
             {{formset.management_form}}
             {% for form in formset.forms%}
                 <div class="image-form">
