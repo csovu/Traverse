@@ -77,7 +77,7 @@ header{
   box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
 }
 
-.post {
+#post {
     background-color: #f7f9f9;
     border:solid ;
     padding: 1em;
@@ -122,9 +122,13 @@ header{
 }
 #post-date,
 #trip-title,
+#location,
 #user {
   display: flex;
   justify-content: center;
+}
+#location {
+  padding: .5em;
 }
 #post-date{
   font-size: .8em;
@@ -265,6 +269,35 @@ header{
 }
 
 
+
+.appear {
+  transition: all 0.8s;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.appear.inview {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.3s;
+}
+
+
+
+/* laod on-scroll tutorial: https://dev.to/miacan2021/fade-in-animation-on-scroll-with-intersectionobserver-vanilla-js-4p27 */
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (min-width:650px) {
 
 #user-img{
@@ -328,7 +361,7 @@ margin: .8rem;
   padding: 5em;
 }
 
-.post {
+#post {
   padding: 2em;
 }
 #post-author,
