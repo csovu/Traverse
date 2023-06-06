@@ -66,9 +66,9 @@
                     <div id="post">
                         <div class="item">
                             <h2 id="trip-title">{{post.trip_title}}</h2>
+                            <p id="post-author"><a href="{% url 'posts:profile' post.user.id %}"> {{post.user}}</a></p>
                             <h6 id="location"> {{post.location}}</h6>
                             <h4 id="trip-summery">{{post.trip_summery}}</h4> -- <a href="{% url 'posts:singlepost' post.id %}">read more {{post.post}}</a>
-                            <p id="post-author">posted by:<a href="{% url 'posts:profile' post.user.id %}"> {{post.user}}</a></p>
                             <p id="post-date">{{post.date_posted}}</p>
                         </div>
                     </div>
