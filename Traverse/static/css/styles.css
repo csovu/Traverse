@@ -10,7 +10,7 @@ body {
 header{
   color: #000000;
   text-decoration: none;
-  background-color: #f7f9f9;
+  background-image: url('/static/header-background.jpeg');
   padding-bottom: 3.5em;
 }
 
@@ -90,11 +90,15 @@ header{
 #trip-summery {
   font-size: 1.2em;
 }
+.navbar-toggler{
+  padding-bottom: .5em;
+}
 
 .dropdown {
     display: block;
     position: absolute;
-    background-color: #ffffff;
+    padding: .4em;
+    background-image: url('/static/header-background.jpeg');
   }
 
 .dropdown-content {
@@ -103,8 +107,11 @@ header{
     width: 100%;
     overflow: visible;
     background-color: #f7f9f9;
+    padding-left: .5em;
   }
-
+#search-menu{
+  padding: .3em;
+}
 .dropdown:hover  .dropdown-content {
     display:block;
 
@@ -112,7 +119,7 @@ header{
 .dropdown-content a {
     display: block;
     color: #000000;
-    padding: 5px;
+    padding: 8px;
   }
 
 #profile-posts {
