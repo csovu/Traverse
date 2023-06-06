@@ -57,14 +57,14 @@
     </header>
     {% block content %}
    
-    <div id="latest_posts">
+    <div id="latest-posts">
         {% if latest_post_list%}
-            <h4 id="home_reports">Latest Trip Reports</h4>
+            <h4 id="home-reports">Latest Trip Reports</h4>
 
                 {%for post in latest_post_list%}
                 <div class="post">
                     <h2 id="trip-title">{{post.trip_title}}</h2>
-                    <h4>{{post.trip_summery}}</h4> -- <a href="{% url 'posts:singlepost' post.id %}">read more {{post.post}}</a>
+                    <h4 id="trip-summery">{{post.trip_summery}}</h4> -- <a href="{% url 'posts:singlepost' post.id %}">read more {{post.post}}</a>
                     <p id="post-author">posted by:<a href="{% url 'posts:profile' post.user.id %}"> {{post.user}}</a></p>
                     <p id="post-date">{{post.date_posted}}</p>
                     <!-- {% for image in post.image_set.all%}
