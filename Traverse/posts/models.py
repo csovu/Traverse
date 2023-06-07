@@ -20,7 +20,7 @@ class Posts(models.Model):
         return self.trip_title
     
 class Image(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, null=True, blank=True)
     image = models.ImageField(upload_to='images', null=True,blank=True)
     posts = models.ForeignKey(Posts, on_delete=models.CASCADE)
     def __str__(self):

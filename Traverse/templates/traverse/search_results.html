@@ -20,10 +20,7 @@
         <p>No post matches found. </p>
     {%endif%}
 
-
-
     <h4>Username Matches: </h4>
-
     {% if users%}
         {%for q in users%}
             <li><a href="{% url 'posts:profile' q.id %}"> {{q}}</a></li>
