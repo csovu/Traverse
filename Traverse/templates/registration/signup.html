@@ -5,6 +5,7 @@
 {% block content %}
 <div id="create-account-signup">
 <h2>Create Account</h2>
+<br>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
