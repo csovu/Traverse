@@ -18,7 +18,7 @@
     <header>
 
         <div id="header">
-            <img src="/static/logo.jpeg" alt="logo" width= "440" height="340">
+            <a href="{% url 'posts:all' %}"><img src="/static/logo.jpeg" alt="logo" width= "440" height="340"></a>
             <div class="custom-shape-divider-bottom-1686156994">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
@@ -79,12 +79,23 @@
                             <h2 id="trip-title">{{post.trip_title}}</h2>
                             <p id="post-author"><a href="{% url 'posts:profile' post.user.id %}"> {{post.user}}</a></p>
                             <h6 id="location"> {{post.location}}</h6>
-                            <h4 id="trip-summery">{{post.trip_summery}}</h4> -- <a href="{% url 'posts:singlepost' post.id %}">read more {{post.post}}</a>
+                            <h6 id="trip-summery">{{post.trip_summery}}</h6> -- <a href="{% url 'posts:singlepost' post.id %}">read more {{post.post}}</a>
                             <p id="post-date">{{post.date_posted}}</p>
                         </div>
+                        <div class="home-post-images" >
+                            {% for image in post.image_set.all %}
+                                {% if image.image %}
+                                    <div id="home-img-div">
+                                        <img class="home-img"src="{{ image.image.url }}" alt="user images" style="max-height:300px">
+                                    </div>
+                                {% endif %}
+                            {%endfor%} 
+                        </div>
+                    
                     </div>
+            
                         {%endfor%}
-                 </div>
+            
                 {% else %}
                 <p>No new Reports! </p>
             {%endif%}

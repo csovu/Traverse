@@ -24,6 +24,15 @@
                     <br>
                     <p>{{post.trip_summery}} </p>
                     <a href="{% url 'posts:singlepost' post.id %}">see more {{post.post}}</a>
+                    <div class="home-post-images" >
+                    {% for image in post.image_set.all %}
+                        {% if image.image %}
+                            <div id="home-img-div">
+                                <img class="home-img"src="{{ image.image.url }}" alt="user images" style="max-height:300px">
+                            </div>
+                        {% endif %}
+                    {%endfor%} 
+                    </div>
                 </div>
             {%endfor%}
         {% else %}

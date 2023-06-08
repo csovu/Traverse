@@ -11,9 +11,10 @@
         {%for q in object_list%}
                 
         <div class="search-result">
-            <h4>{{q.trip_title}} <a href="{% url 'posts:singlepost' q.id %}">see more {{q.post}}</a></h4>
-            <p><h6>{{q.location}}</h6></p>
-            <p>posted by: <a href="{% url 'posts:profile' q.user.id %}">{{q.user}}</a>, {{q.date_posted}}</p>
+            <h4 class="search-trip-title">{{q.trip_title}} </h4>
+            <h5 class="search-trip-title"><a href="{% url 'posts:singlepost' q.id %}">see more {{q.post}}</a></h5>
+            <h6 class="search-trip-title">{{q.location}}</h6>
+            <p class="search-trip-title"><a href="{% url 'posts:profile' q.user.id %}">{{q.user}}</a>, {{q.date_posted}}</p>
         </div>
             {%endfor%}
         {% else %}
@@ -21,13 +22,21 @@
     {%endif%}
 
     <h4>Username Matches: </h4>
-    {% if users%}
-        {%for q in users%}
-            <li><a href="{% url 'posts:profile' q.id %}"> {{q}}</a></li>
-        {%endfor%}
-        {% else %}
-        <p>No username matches found. </p>
-    {%endif%}
+    <div class="user-matches">
+        {% if users%}
+            {%for q in users%}
+                <ul>
+                    <a id="search-user-name" href="{% url 'posts:profile' q.id %}"> {{q}} </a>
+                    {% if q.profile_picture%}
+                    <a id="search-user-name" href="{% url 'posts:profile' q.id %}"> <img id="search-user-picture" src="{{q.profile_picture.url}}" alt="profile image" style="max-height:300px"></a>
+                    {%endif%}
+
+                </ul>
+            {%endfor%}
+            {% else %}
+            <p>No username matches found. </p>
+        {%endif%}
+    </div>
 </div>
 
 

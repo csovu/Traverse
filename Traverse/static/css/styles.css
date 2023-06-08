@@ -159,38 +159,56 @@ header{
   font-size: 1.2em;
 }
 
+.home-post-images{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: .5em;
+}
+
+.home-img{
+  width: 150px ;
+  height: 150px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+
 .navbar-toggler{
   padding-bottom: .5em;
 }
 
 .dropdown {
-    display: block;
-    position: absolute;
-    padding: .4em;
+  display: block;
+  position: absolute;
+  padding: .4em;
 
 }
 
 .dropdown-content {
-    display: none;
-    position: relative;
-    width: 100%;
-    overflow: visible;
-    background-color: #f7f9f9;
-    padding-left: .5em;
+  display: none;
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  background-color: #f7f9f9;
+  padding-left: .5em;
 }
 
 #search-menu{
   padding: .3em;
 }
 .dropdown:hover  .dropdown-content {
-    display:block;
+  display:block;
 
 }
 
 .dropdown-content a {
-    display: block;
-    color: #000000;
-    padding: 8px;
+  display: block;
+  color: #000000;
+  padding: 8px;
 }
 
 #profile-posts {
@@ -209,11 +227,12 @@ header{
 }
 
 #trip-title {
-  padding: .5em;
+  padding-bottom: .5em;
 }
 
 #location {
   padding-bottom: 2em;
+  font-size: 1.2em;
 }
 
 #post-date{
@@ -228,7 +247,8 @@ header{
 
 #results-page{
   justify-content: baseline;
-  padding: 1em;
+  padding: 3em;
+  padding-bottom: 6em;
 }
 
 .search-result {
@@ -239,7 +259,38 @@ header{
   border-width: 1px ;
   margin-bottom: 1rem;
 }
+.search-trip-title{
+  display: flex;
+  justify-content: center;
+}
 
+.user-matches {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #f7f9f9;
+  border:solid ;
+  padding: 1em;
+  border-radius: .2em;
+  border-width: 1px ;
+  margin-bottom: 1rem;
+  font-size: 1.2em;
+}
+
+#search-user-picture {
+  width: 180px ;
+  height: 180px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+#search-user-name{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #account-title{
   padding: .5em;
 }
@@ -370,16 +421,13 @@ header{
 
 /* laod on-scroll tutorial: https://dev.to/miacan2021/fade-in-animation-on-scroll-with-intersectionobserver-vanilla-js-4p27 */
 
-.item{
-  padding-top: 2.5em;
-}
 
 .image-form{
 padding-top: 2em;
 }
 
 #post-form{
-  padding-bottom: em;
+  padding-bottom: 2em;
 }
 
 
@@ -455,7 +503,4 @@ margin: .8rem; */
   padding: 2em;
 }
 
-#post {
-  padding: 2em;
-}
 }
