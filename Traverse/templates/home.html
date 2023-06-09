@@ -16,7 +16,6 @@
 </head>
 <body>    
     <header>
-
         <div id="header">
             <a href="{% url 'posts:all' %}"><img src="/static/logo.jpeg" alt="logo" width= "440" height="340"></a>
             <div class="custom-shape-divider-bottom-1686156994">
@@ -64,43 +63,45 @@
                 </div>
             </div>
         </div> 
-
     </header>
 
+    <div id="home-wrapper">
     {% block content %}
+        <div id="latest-posts">
+            {% if latest_post_list%}
+                <h4 id="home-reports">Latest Trip Reports</h4>
+                    <div class="container appear">
+                        {%for post in latest_post_list%}
+                        <div id="post">
+                            <div class="item">
+                                <h2 id="trip-title">{{post.trip_title}}</h2>
+                                <p id="post-author"><a href="{% url 'posts:profile' post.user.id %}"> {{post.user}}</a></p>
+                                <h6 id="location"> {{post.location}}</h6>
+                                <h6 id="trip-summery">{{post.trip_summery}}</h6> -- <a href="{% url 'posts:singlepost' post.id %}">read more {{post.post}}</a>
+                                <p id="post-date">{{post.date_posted}}</p>
+                            </div>
+                            <div class="home-post-images" >
+                                {% for image in post.image_set.all %}
+                                    {% if image.image %}
+                                        <div id="home-img-div">
+                                            <img class="home-img"src="{{ image.image.url }}" alt="user images" style="max-height:300px">
+                                        </div>
+                                    {% endif %}
+                                {%endfor%} 
+                            </div>
+                        
+                        </div>
+                
+                            {%endfor%}
+                
+                    {% else %}
+                    <p>No new Reports! </p>
+                {%endif%}
 
-    <div id="latest-posts">
-        {% if latest_post_list%}
-            <h4 id="home-reports">Latest Trip Reports</h4>
-                <div class="container appear">
-                    {%for post in latest_post_list%}
-                    <div id="post">
-                        <div class="item">
-                            <h2 id="trip-title">{{post.trip_title}}</h2>
-                            <p id="post-author"><a href="{% url 'posts:profile' post.user.id %}"> {{post.user}}</a></p>
-                            <h6 id="location"> {{post.location}}</h6>
-                            <h6 id="trip-summery">{{post.trip_summery}}</h6> -- <a href="{% url 'posts:singlepost' post.id %}">read more {{post.post}}</a>
-                            <p id="post-date">{{post.date_posted}}</p>
-                        </div>
-                        <div class="home-post-images" >
-                            {% for image in post.image_set.all %}
-                                {% if image.image %}
-                                    <div id="home-img-div">
-                                        <img class="home-img"src="{{ image.image.url }}" alt="user images" style="max-height:300px">
-                                    </div>
-                                {% endif %}
-                            {%endfor%} 
-                        </div>
-                    
-                    </div>
-            
-                        {%endfor%}
-            
-                {% else %}
-                <p>No new Reports! </p>
-            {%endif%}
-    {% endblock %}
+        </div>
+        {% endblock %}
     </div>
+
 </body>
 </html> 
 <!-- homepage laod on-scroll tutorial: https://dev.to/miacan2021/fade-in-animation-on-scroll-with-intersectionobserver-vanilla-js-4p27 -->

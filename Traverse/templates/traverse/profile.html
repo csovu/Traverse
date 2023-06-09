@@ -12,9 +12,14 @@
         {% if selected_user.profile_picture%}
             <img id="selected-user-picture" src="{{selected_user.profile_picture.url}}" alt="profile image" style="max-height:300px">
         {%endif%}
-        {% if selected_user.about%}
-            <p id="selected-user-about">{{selected_user.about}}</p>
+        <div class="selected-user-about">
+        {% if selected_user.location%}
+            <p >{{selected_user.location}}</p>
         {%endif%}
+        {% if selected_user.about%}
+            <p>{{selected_user.about}}</p>
+        {%endif%}
+        </div>
         </div>
             {%for post in user_posts%}
                 <div id="profile-posts">
