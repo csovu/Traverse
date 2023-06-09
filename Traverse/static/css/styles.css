@@ -1,31 +1,16 @@
 body {
-  background-color: rgba(159, 214, 197, 0.337);
+  /* background-color: rgba(159, 214, 197, 0.337); */
   font-family: 'Playfair Display', serif;
   position: relative;
   padding-bottom: 2em;
-  background: rgb(2,0,36);
+  background-size: auto;
+  background-color: #ececc5;
   background: linear-gradient(177deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(4,118,193,1) 0%, rgba(3,131,201,1) 0%, rgba(248,249,250,1) 0%, rgba(240,245,245,1) 0%, rgba(244,247,248,1) 0%, rgba(237,238,205,1) 0%, rgba(236,236,197,0.8765858208955224) 0%, rgba(236,236,197,0.9810634328358209) 0%, rgba(110,179,169,1) 100%);
 }
-.custom-shape-divider-bottom-1686157409 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom-1686157409 svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 93px;
-}
-
-.custom-shape-divider-bottom-1686157409 .shape-fill {
-  fill: #f2f8f6;
-}
+/* html {
+  fill: #ececc5;
+  background: linear-gradient(177deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(4,118,193,1) 0%, rgba(3,131,201,1) 0%, rgba(248,249,250,1) 0%, rgba(240,245,245,1) 0%, rgba(244,247,248,1) 0%, rgba(237,238,205,1) 0%, rgba(236,236,197,0.8765858208955224) 0%, rgba(236,236,197,0.9810634328358209) 0%, rgba(110,179,169,1) 100%);
+} */
 
 #login-home-page,
 #create-account-signup{
@@ -56,12 +41,10 @@ body {
 }
 
 .custom-shape-divider-bottom-1686156994 .shape-fill {
-  /* fill: rgba(159, 214, 197, 0.337); */
   fill: #ececc5cb;
 }
 
 header{
-  /* color: #ddbbbb; */
   text-decoration: none;
   background-image: url('/static/header-background.jpeg');
   padding-bottom: 7em;
@@ -69,12 +52,12 @@ header{
 }
 
 #header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    text-decoration-color: #948989;
-    background-image: url('/static/header-background.jpeg');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  text-decoration-color: #948989;
+  background-image: url('/static/header-background.jpeg');
 }
 
 
@@ -128,20 +111,14 @@ header{
 }
 
 #edit-uploaded-img{ 
-  /* border:solid ; */
   padding: 2em;
   padding-bottom: 1.5em;
-  /* border-radius: .2em;
-  border-width: 1px ;
-  margin-bottom: 1rem;
-  box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51); */
 }
 
 #latest-posts {
   display: flex;
   flex-direction: column;   
   padding: 2em;
-  box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
 }
 
 #post {
@@ -202,7 +179,6 @@ header{
 }
 .dropdown:hover  .dropdown-content {
   display:block;
-
 }
 
 .dropdown-content a {
@@ -251,13 +227,14 @@ header{
   padding-bottom: 6em;
 }
 
+
 .search-result {
   background-color: #cfe7e799;
   border:solid ;
   padding: 1em;
   border-radius: .2em;
   border-width: 1px ;
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 .search-trip-title{
   display: flex;
@@ -275,7 +252,7 @@ header{
   padding: 1em;
   border-radius: .2em;
   border-width: 1px ;
-  margin-bottom: 1rem;
+  margin: 1rem;
   font-size: 1.2em;
 }
 
@@ -313,7 +290,6 @@ header{
   padding: 1.5em;
   border-radius: .2em;
   border-width: 1px ;
-  /* margin-bottom: 1rem; */
   box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
 }
 
@@ -326,16 +302,7 @@ header{
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* padding-bottom: 8em; */
  }
-
-#profile-image{
-  /* border: 1px solid #3e3a3a; */
-  /* padding: 1.2em; */
-  /* border-radius: 3%;
-  background-color: #3e3a3a2b; */
-  /* margin: 1rem; */
-}
 
 #profile-posts{
   display: flex;
@@ -370,10 +337,8 @@ header{
   object-fit: cover; 
   object-position: bottom; 
   justify-content: space-around;
-  /* align-items: center; */
   flex-wrap: wrap;
   box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
-  /* margin: .8rem; */
 }
 
 .individual-img{
@@ -421,7 +386,6 @@ header{
 
 /* laod on-scroll tutorial: https://dev.to/miacan2021/fade-in-animation-on-scroll-with-intersectionobserver-vanilla-js-4p27 */
 
-
 .image-form{
 padding-top: 2em;
 }
@@ -438,16 +402,8 @@ padding-top: 2em;
   font-size: 1.8em;
 }
 
-
 #post-date{
   font-size: 1em;
-}
-
-#user-img{
-  /* max-width: auto; */
-  /* padding: 1em;
-  max-width: 100%;
-  height: auto; */
 }
 
 #profile-image{
@@ -455,15 +411,12 @@ display: flex;
 width:100%;
 justify-content: space-around;
 align-items: center;
-/* box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
-margin: .8rem; */
 }
 
 #myaccount-view{
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   width: auto;
   box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
   margin: 4rem;
