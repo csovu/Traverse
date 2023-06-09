@@ -1,13 +1,10 @@
 from typing import Any
-from django.db.models.query import QuerySet
 from django.shortcuts import render, reverse, redirect
 from posts.models import *
 from django.contrib.auth import get_user_model
-from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
-from django.views.generic import DetailView
 from django.db.models import Q
 
 
