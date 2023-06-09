@@ -1,12 +1,13 @@
 # Traverse
 
+http://csovu.pythonanywhere.com
+
 ## Overview
     TripReport is a blog-social media site allowing users to upload their trip information. Details include location, distances(milage), maps, images, planning considerations an overall description of how the trip went, and future considerations. While this is primarily a platform for new routes through the backcountry, popular existing trails (PCT,AT,CDT, etc.) are welcome, too. 
 
 ## Features
     #### User Stories
         - As a backpacker, I want to visit a new area but don't know where to go.
-        - My parents won't get off my back about starting a blog and I want a platform I won't have to maintain to write about my trips.
         - As an outdoors-person I want to share a cool trip I went on in detail, but I don't want run my own website to do it. 
     #### Tasks
         - Users have unique profiles
