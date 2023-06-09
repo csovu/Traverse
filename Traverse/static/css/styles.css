@@ -6,7 +6,6 @@ body {
   background-color:  rgba(110,179,169,1);
 }
 
-
 #login-home-page,
 #create-account-signup{
   display: flex;
@@ -228,7 +227,6 @@ header{
   padding-bottom: 6em;
 }
 
-
 .search-result {
   background-color: #cfe7e799;
   border:solid ;
@@ -331,7 +329,6 @@ header{
   justify-content: center;
 }
 
-
 #single-post-images{
   display: flex;
   width: 100%; 
@@ -425,7 +422,6 @@ align-items: center;
   box-shadow:  0px 3px 7px -1px rgba(36, 90, 137, 0.51);
   margin: 4rem;
   margin-bottom: 8rem;
-
 }
 
 #selected-user-about{
@@ -450,8 +446,6 @@ align-items: center;
 #post {
   margin: 2.5rem;
 }
-
-
 }
 
 
@@ -461,5 +455,4 @@ align-items: center;
   display: flex;
   padding: 2em;
 }
-
 }
